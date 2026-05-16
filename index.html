@@ -245,15 +245,19 @@ if(!s)return;
 var rd=remD,bb=s.nextBB.replace(/-/g,''),ex=s.nextEx.replace(/-/g,''),py=s.nextPy.replace(/-/g,'');
 var nw=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
 var l=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UAE Div Tracker//EN','METHOD:PUBLISH',
-'BEGIN:VEVENT','UID:bb-'+id+'-'+bb+'@uaediv','DTSTAMP:'+nw,'DTSTART;VALUE=DATE:'+bb,'DTEND;VALUE=DATE:'+bb,
+'X-WR-TIMEZONE:Asia/Dubai',
+'BEGIN:VEVENT','UID:bb-'+id+'-'+bb+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+bb+'T050000Z','DTEND:'+bb+'T060000Z',
 'SUMMARY:BUY BY: '+s.n+' ('+s.t+') - AED '+s.nextD.toFixed(3)+'/share',
-'DESCRIPTION:Last day to buy '+s.n+' for dividend. Yield: '+s.yTotal+'%',
-'BEGIN:VALARM','TRIGGER:-P'+rd+'D','ACTION:DISPLAY','DESCRIPTION:Buy '+s.n+' within '+rd+' days for dividend','END:VALARM',
+'DESCRIPTION:Last day to buy '+s.n+' for dividend. Yield: '+s.yTotal+'%. Market opens 9:00 AM UAE.',
+'BEGIN:VALARM','TRIGGER:-P'+rd+'D','ACTION:DISPLAY','DESCRIPTION:Buy '+s.n+' within '+rd+' days for dividend (market opens 9 AM UAE)','END:VALARM',
 'END:VEVENT',
-'BEGIN:VEVENT','UID:ex-'+id+'-'+ex+'@uaediv','DTSTAMP:'+nw,'DTSTART;VALUE=DATE:'+ex,'DTEND;VALUE=DATE:'+ex,
-'SUMMARY:EX-DIV: '+s.n+' ('+s.t+')','DESCRIPTION:Ex-Dividend. Buying today will NOT qualify.','END:VEVENT',
-'BEGIN:VEVENT','UID:py-'+id+'-'+py+'@uaediv','DTSTAMP:'+nw,'DTSTART;VALUE=DATE:'+py,'DTEND;VALUE=DATE:'+py,
-'SUMMARY:PAYMENT: '+s.n+' - AED '+s.nextD.toFixed(3)+'/share','DESCRIPTION:Dividend credited. Settles in 1-2 days.','END:VEVENT',
+'BEGIN:VEVENT','UID:ex-'+id+'-'+ex+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+ex+'T050000Z','DTEND:'+ex+'T060000Z',
+'SUMMARY:EX-DIV: '+s.n+' ('+s.t+')','DESCRIPTION:Ex-Dividend date. Buying today will NOT qualify for dividend.','END:VEVENT',
+'BEGIN:VEVENT','UID:py-'+id+'-'+py+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+py+'T050000Z','DTEND:'+py+'T060000Z',
+'SUMMARY:PAYMENT: '+s.n+' - AED '+s.nextD.toFixed(3)+'/share','DESCRIPTION:Dividend of AED '+s.nextD.toFixed(3)+'/share credited to your account. Settles in 1-2 business days.','END:VEVENT',
 'END:VCALENDAR'];
 var blob=new Blob([l.join('\r\n')],{type:'text/calendar'});
 var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=s.t+'_div.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
