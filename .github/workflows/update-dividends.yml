@@ -1,0 +1,49 @@
+name: Update UAE Dividend Data
+
+on:
+  schedule:
+    # Run on 1st of every month at 06:00 UTC (10:00 AM Dubai time)
+    - cron: '0 6 1 * *'
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-dividends:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          cd scraper
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps
+
+      - name: Run dividend scraper
+        run: |
+          cd scraper
+          python scrape_dividends.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/stocks.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push updated data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/stocks.json
+          git commit -m "Update dividend data [automated]"
+          git push
