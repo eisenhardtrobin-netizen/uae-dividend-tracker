@@ -242,22 +242,34 @@ document.getElementById('movl').classList.add('show');
 function dlICS(id){
 var s=null,ii;for(ii=0;ii<S.length;ii++)if(S[ii].id===id){s=S[ii];break;}
 if(!s)return;
-var rd=remD,bb=s.nextBB.replace(/-/g,''),ex=s.nextEx.replace(/-/g,''),py=s.nextPy.replace(/-/g,'');
+var rd=remD;
+var bb=s.nextBB.replace(/-/g,''),ex=s.nextEx.replace(/-/g,''),py=s.nextPy.replace(/-/g,'');
 var nw=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+// Calculate reminder date: rd days before buy-by date
+var bbParts=s.nextBB.split('-');
+var remDate=new Date(+bbParts[0],+bbParts[1]-1,+bbParts[2]);
+remDate.setDate(remDate.getDate()-rd);
+var remStr=remDate.getFullYear()+('0'+(remDate.getMonth()+1)).slice(-2)+('0'+remDate.getDate()).slice(-2);
 var l=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UAE Div Tracker//EN','METHOD:PUBLISH',
 'X-WR-TIMEZONE:Asia/Dubai',
+'BEGIN:VEVENT','UID:rem-'+id+'-'+remStr+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+remStr+'T050000Z','DTEND:'+remStr+'T051000Z',
+'SUMMARY:REMINDER: Buy '+s.n+' ('+s.t+') - '+rd+' days before Buy-By date',
+'DESCRIPTION:This reminder is '+rd+' days prior to the Buy-By date ('+s.nextBB+').\nBuy '+s.n+' before '+s.nextBB+' to receive dividend of AED '+s.nextD.toFixed(3)+'/share (Yield: '+s.yTotal+'%).\nMarket opens 9:00 AM UAE.',
+'BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:'+rd+' days until Buy-By deadline for '+s.n,'END:VALARM',
+'END:VEVENT',
 'BEGIN:VEVENT','UID:bb-'+id+'-'+bb+'@uaediv','DTSTAMP:'+nw,
-'DTSTART:'+bb+'T050000Z','DTEND:'+bb+'T060000Z',
-'SUMMARY:BUY BY: '+s.n+' ('+s.t+') - AED '+s.nextD.toFixed(3)+'/share',
-'DESCRIPTION:Last day to buy '+s.n+' for dividend. Yield: '+s.yTotal+'%. Market opens 9:00 AM UAE.',
-'BEGIN:VALARM','TRIGGER:-P'+rd+'D','ACTION:DISPLAY','DESCRIPTION:Buy '+s.n+' within '+rd+' days for dividend (market opens 9 AM UAE)','END:VALARM',
+'DTSTART:'+bb+'T050000Z','DTEND:'+bb+'T051000Z',
+'SUMMARY:BUY BY TODAY: '+s.n+' ('+s.t+') - Last day to buy for dividend',
+'DESCRIPTION:Today is the LAST DAY to buy '+s.n+' to receive dividend of AED '+s.nextD.toFixed(3)+'/share (Yield: '+s.yTotal+'%).\nEx-Dividend is tomorrow - do not miss this deadline.\nMarket opens 9:00 AM UAE.',
+'BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:TODAY is the last day to buy '+s.n+' for dividend!','END:VALARM',
 'END:VEVENT',
 'BEGIN:VEVENT','UID:ex-'+id+'-'+ex+'@uaediv','DTSTAMP:'+nw,
-'DTSTART:'+ex+'T050000Z','DTEND:'+ex+'T060000Z',
-'SUMMARY:EX-DIV: '+s.n+' ('+s.t+')','DESCRIPTION:Ex-Dividend date. Buying today will NOT qualify for dividend.','END:VEVENT',
+'DTSTART:'+ex+'T050000Z','DTEND:'+ex+'T051000Z',
+'SUMMARY:EX-DIV: '+s.n+' ('+s.t+') - Too late to buy','DESCRIPTION:Ex-Dividend date for '+s.n+'. Buying today will NOT qualify for the dividend.','END:VEVENT',
 'BEGIN:VEVENT','UID:py-'+id+'-'+py+'@uaediv','DTSTAMP:'+nw,
-'DTSTART:'+py+'T050000Z','DTEND:'+py+'T060000Z',
-'SUMMARY:PAYMENT: '+s.n+' - AED '+s.nextD.toFixed(3)+'/share','DESCRIPTION:Dividend of AED '+s.nextD.toFixed(3)+'/share credited to your account. Settles in 1-2 business days.','END:VEVENT',
+'DTSTART:'+py+'T050000Z','DTEND:'+py+'T051000Z',
+'SUMMARY:PAYMENT: '+s.n+' - AED '+s.nextD.toFixed(3)+'/share credited','DESCRIPTION:Dividend of AED '+s.nextD.toFixed(3)+'/share from '+s.n+' credited to your account. Settles in 1-2 business days.','END:VEVENT',
 'END:VCALENDAR'];
 var blob=new Blob([l.join('\r\n')],{type:'text/calendar'});
 var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=s.t+'_div.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
