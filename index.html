@@ -149,6 +149,570 @@ main{padding:2rem;max-width:1440px;margin:0 auto}
 .kofi-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 24px rgba(19,195,255,.45)}
 .kofi-float:active{transform:translateY(0) scale(.98)}
 @media(max-width:768px){
+header{padding:1rem;flex-direction:column;align-items:flex-start;gap:.8rem}
+.htitle{font-size:1.1rem;width:100%}
+.hctrl{width:100%;justify-content:flex-start;flex-wrap:wrap}
+.hctrl input{width:100%!important;font-size:16px}
+.hctrl select{font-size:16px}
+.rem-wrap{width:100%}
+.rem-wrap select{flex:1}
+main{padding:1rem .8rem}
+.sgrid{grid-template-columns:1fr}
+.cgrid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.info-grid{grid-template-columns:1fr}
+.info-box{padding:1rem}
+nav{padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.ntab{padding:.9rem 1rem;font-size:.88rem;min-height:48px;flex-shrink:0}
+body{font-size:1rem}
+.scard{padding:1rem}
+.sn{font-size:1rem}
+.sy{font-size:1.5rem}
+.sd{font-size:.84rem}
+.sdates{grid-template-columns:1fr 1fr;gap:.6rem}
+.dval{font-size:.88rem}
+.dlbl{font-size:.72rem}
+.sacts{flex-direction:column}
+.sacts .btn,.sacts a{width:100%;text-align:center;padding:.6rem;font-size:.88rem;min-height:44px;display:flex;align-items:center;justify-content:center}
+.info-item strong{font-size:.9rem}
+.info-item p{font-size:.8rem}
+.filter-bar{flex-direction:column;gap:.6rem;align-items:stretch}
+.filter-bar label{margin:0}
+.filter-bar select{width:100%;font-size:16px;padding:.5rem}
+.tgrp{flex-wrap:wrap}
+.tgbtn{font-size:.85rem;padding:.5rem .8rem;min-height:44px}
+.kofi-float{bottom:16px;right:16px;padding:.5rem .8rem;font-size:.72rem}
+.modal{max-width:95vw;max-height:90vh;margin:0.5rem}
+.moh{padding:.8rem 1rem}
+.mob{padding:.8rem 1rem}
+.mev{padding:.6rem}
+.rtbl{font-size:.75rem}
+.rtbl th,.rtbl td{padding:.5rem .4rem}
+.rb{width:22px;height:22px;font-size:.65rem}
+.dcell{min-width:28px;min-height:28px}
+.cleg{gap:.8rem}
+.cleg span{font-size:.72rem}
+.ftr{padding:.8rem;font-size:.68rem}
+}
+@media(max-width:480px){
+header{padding:.8rem}
+.htitle{font-size:1rem}
+.cgrid{grid-template-columns:1fr}
+.sdates{grid-template-columns:1fr}
+.hctrl input{font-size:16px}
+.kofi-float{bottom:12px;right:12px;padding:.4rem .6rem;font-size:.65rem}
+.kofi-float .kofi-text{display:none}
+.mcard{border-radius:8px}
+.dcell{min-width:24px;min-height:24px;font-size:.65rem}
+.dgrid{gap:0}
+.ntab{padding:.8rem .7rem;font-size:.82rem}
+.info-box h3{font-size:.88rem}
+.rtbl{font-size:.7rem}
+.rtbl th,.rtbl td{padding:.4rem .3rem}
+.exb{font-size:.6rem;padding:.1rem .3rem}
+}
+@media(max-width:360px){
+main{padding:.6rem}
+.sgrid{gap:.8rem}
+.scard{padding:.8rem}
+.sy{font-size:1.3rem}
+.ntab{padding:.7rem .5rem;font-size:.78rem}
+}
+</style>
+</head>
+<body>
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0">UAE Dividend Tracker 2026 - DFM and ADX Stock Dividend Calendar with Ex-Dividend Dates and Yields</h1>
+<header>
+<div class="htitle">UAE Dividend Tracker<small>DFM &amp; ADX | 47 Stocks | Real 2026 Data | Updated: May 2026</small></div>
+<div class="hctrl">
+<div class="rem-wrap">
+<select id="remD" onchange="saveRem(this.value)">
+<option value="3">3 days before</option>
+<option value="5">5 days before</option>
+<option value="7" selected>7 days before</option>
+<option value="14">14 days before</option>
+<option value="30">30 days before</option>
+</select>
+<span class="rem-help">?</span>
+<div class="rem-tip"><strong>Reminder Days</strong><br>Choose how many days BEFORE the Buy-By date your calendar reminder will fire. When you download an .ics file, the alert triggers this many days in advance - giving you time to place your buy order before the deadline passes.</div>
+</div>
+<input type="text" id="srcI" placeholder="Search stocks..." oninput="doSearch(this.value)" style="width:160px">
+<button class="tbtn" id="tmB" onclick="togTheme()">D</button>
+</div>
+</header>
+<nav id="navB"></nav>
+<main>
+<div class="tc active" id="tab-cal"></div>
+<div class="tc" id="tab-rank"></div>
+<div class="tc" id="tab-fav"></div>
+<div class="tc" id="tab-all"></div>
+</main>
+<div class="mov" id="movl" onclick="if(event.target===this)hMod()">
+<div class="modal"><div class="moh"><h3 id="moT">Events</h3><button class="moc" onclick="hMod()">X</button></div><div class="mob" id="moB"></div></div>
+</div>
+<a href="https://ko-fi.com/uaedividend" target="_blank" class="kofi-float" title="Buy the developer a coffee"><span style="font-size:1.1rem">&#9749;</span> <span class="kofi-text">Buy the developer a coffee</span></a>
+<div class="ftr">Data refreshed monthly. Verify dates with DFM/ADX before trading. | <a href="https://ko-fi.com/uaedividend" target="_blank">&#9749; Buy the developer a coffee</a><br><strong>Disclaimer:</strong> This tool is for informational purposes only. We do not take responsibility for the correctness or completeness of the data. This is not financial advice &mdash; always do your own research and consult a licensed financial advisor before making investment decisions.</div>
+<script>
+var TODAY=(function(){var now=new Date();var uae=new Date(now.getTime()+(4*60*60*1000)-(now.getTimezoneOffset()*60*1000));return uae.getFullYear()+'-'+('0'+(uae.getMonth()+1)).slice(-2)+'-'+('0'+uae.getDate()).slice(-2);})();
+var timeFilter='all';
+var sortMode='date';
+var rankFilter='upcoming';
+var rankSort='yield';
+var IBKR_URL='https://www.interactivebrokers.com/mkt/?src=uaedividendtracker&url=%2Fen%2Ftrading%2Fadx-exchange-abu-dhabi.php';
+var S=[
+{id:1,n:"Air Arabia",t:"AIRARABIA",x:"DFM",d:0.3,p:3.2,ex:"2026-03-18",r:"2026-03-17",py:"2026-04-10",s:"Aviation",freq:"Annual"},
+{id:2,n:"Ajman Bank",t:"AJMANBANK",x:"DFM",d:0.0918,p:1.45,ex:"2026-03-12",r:"2026-03-11",py:"2026-03-24",s:"Banking",freq:"Annual"},
+{id:3,n:"Al Ansari Financial",t:"ALANSARI",x:"DFM",d:0.0198,p:1.1,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-17",s:"Financial",freq:"Annual"},
+{id:4,n:"Alliance Insurance",t:"ALLIANCE",x:"DFM",d:0.3,p:1.8,ex:"2026-04-17",r:"2026-04-16",py:"2026-05-01",s:"Insurance",freq:"Annual"},
+{id:5,n:"Al Ramz Corporation",t:"ALRAMZ",x:"DFM",d:0.07,p:0.95,ex:"2026-05-01",r:"2026-04-30",py:"2026-05-18",s:"Financial",freq:"Annual"},
+{id:6,n:"Amanat Holdings",t:"AMANAT",x:"DFM",d:0.07,p:0.88,ex:"2026-04-09",r:"2026-04-08",py:"2026-04-17",s:"Investment",freq:"Annual"},
+{id:7,n:"Amlak Finance",t:"AMLAK",x:"DFM",d:0.49,p:2.15,ex:"2026-05-01",r:"2026-04-30",py:"2026-05-15",s:"Financial",freq:"Annual"},
+{id:8,n:"Commercial Bank of Dubai",t:"CBD",x:"DFM",d:0.5862,p:8.5,ex:"2026-03-06",r:"2026-03-05",py:"2026-03-12",s:"Banking",freq:"Annual"},
+{id:9,n:"DEWA",t:"DEWA",x:"DFM",d:0.062,p:2.55,ex:"2026-04-10",r:"2026-04-09",py:"2026-04-20",s:"Utilities",freq:"Annual"},
+{id:10,n:"Deyaar Development",t:"DEYAAR",x:"DFM",d:0.05,p:0.68,ex:"2026-04-17",r:"2026-04-16",py:"2026-04-29",s:"Real Estate",freq:"Annual"},
+{id:11,n:"DFM",t:"DFM",x:"DFM",d:0.065,p:1.85,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-13",s:"Financial",freq:"Annual"},
+{id:12,n:"Dubai Islamic Bank",t:"DIB",x:"DFM",d:0.35,p:6.4,ex:"2026-04-10",r:"2026-04-09",py:"2026-04-16",s:"Banking",freq:"Annual"},
+{id:13,n:"Dubai Investments",t:"DIC",x:"DFM",d:0.25,p:2.3,ex:"2026-05-01",r:"2026-04-30",py:"2026-05-21",s:"Investment",freq:"Annual"},
+{id:14,n:"du (EITC)",t:"DU",x:"DFM",d:0.4,p:6.8,ex:"2026-04-08",r:"2026-04-07",py:"2026-04-29",s:"Telecom",freq:"Annual"},
+{id:15,n:"Emaar Properties",t:"EMAAR",x:"DFM",d:1.0,p:8.2,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-22",s:"Real Estate",freq:"Annual"},
+{id:16,n:"Emaar Development",t:"EMAARDEV",x:"DFM",d:1.0,p:5.8,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-15",s:"Real Estate",freq:"Annual"},
+{id:17,n:"Emirates NBD",t:"EMIRATESNBD",x:"DFM",d:1.0,p:18.5,ex:"2026-02-26",r:"2026-02-25",py:"2026-03-02",s:"Banking",freq:"Annual"},
+{id:18,n:"Empower",t:"EMPOWER",x:"DFM",d:0.4375,p:2.9,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-23",s:"Utilities",freq:"Annual"},
+{id:19,n:"GFH Financial Group",t:"GFH",x:"DFM",d:0.0811,p:1.35,ex:"2026-03-31",r:"2026-05-30",py:"2026-04-15",s:"Financial",freq:"Annual"},
+{id:20,n:"Mashreq Bank",t:"MASQ",x:"DFM",d:10.2,p:210.0,ex:"2026-03-18",r:"2026-03-17",py:"2026-03-30",s:"Banking",freq:"Annual"},
+{id:21,n:"Parkin",t:"PARKIN",x:"DFM",d:0.1146,p:4.5,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-24",s:"Transport",freq:"Annual"},
+{id:22,n:"Salik",t:"SALIK",x:"DFM",d:0.1187,p:4.1,ex:"2026-04-17",r:"2026-04-16",py:"2026-04-27",s:"Transport",freq:"Annual"},
+{id:23,n:"Spinneys",t:"SPINNEYS",x:"DFM",d:0.036,p:2.4,ex:"2026-03-25",r:"2026-03-24",py:"2026-04-06",s:"Retail",freq:"Annual"},
+{id:24,n:"Tabreed",t:"TABREED",x:"DFM",d:0.065,p:3.25,ex:"2026-04-03",r:"2026-04-02",py:"2026-04-15",s:"Utilities",freq:"Annual"},
+{id:25,n:"Talabat",t:"TALABAT",x:"DFM",d:0.8625,p:2.8,ex:"2026-04-22",r:"2026-04-21",py:"2026-05-12",s:"Technology",freq:"Annual"},
+{id:26,n:"Tecom Group",t:"TECOM",x:"DFM",d:0.088,p:3.4,ex:"2026-03-18",r:"2026-03-17",py:"2026-03-27",s:"Real Estate",freq:"Annual"},
+{id:27,n:"Union Coop",t:"UNIONCOOP",x:"DFM",d:0.14,p:4.5,ex:"2026-04-16",r:"2026-04-15",py:"2026-04-28",s:"Retail",freq:"Annual"},
+{id:28,n:"Union Properties",t:"UPP",x:"DFM",d:0.045,p:0.38,ex:"2026-04-16",r:"2026-04-15",py:"2026-04-30",s:"Real Estate",freq:"Annual"},
+{id:29,n:"Dubai Refreshments",t:"DRC",x:"DFM",d:1.1,p:5.2,ex:"2026-04-10",r:"2026-04-09",py:"2026-04-28",s:"F&B",freq:"Annual"},
+{id:30,n:"Sukoon International",t:"SUKOON",x:"DFM",d:0.25,p:1.3,ex:"2026-03-11",r:"2026-03-10",py:"2026-03-26",s:"Insurance",freq:"Annual"},
+{id:31,n:"Etisalat e&",t:"ETISALAT",x:"ADX",d:0.4,p:26.4,ex:"2026-04-23",r:"2026-04-26",py:"2026-05-14",s:"Telecom",freq:"Semi-Annual",ex2:"2026-10-22",py2:"2026-11-12",d2:0.4},
+{id:32,n:"First Abu Dhabi Bank",t:"FAB",x:"ADX",d:0.52,p:13.5,ex:"2026-03-09",r:"2026-03-10",py:"2026-03-30",s:"Banking",freq:"Annual"},
+{id:33,n:"Abu Dhabi Islamic Bank",t:"ADIB",x:"ADX",d:0.3,p:12.8,ex:"2026-03-16",r:"2026-03-17",py:"2026-04-06",s:"Banking",freq:"Annual"},
+{id:34,n:"Aldar Properties",t:"ALDAR",x:"ADX",d:0.155,p:6.3,ex:"2026-04-06",r:"2026-04-07",py:"2026-04-27",s:"Real Estate",freq:"Annual"},
+{id:35,n:"ADNOC Distribution",t:"ADNOCDIST",x:"ADX",d:0.1013,p:3.6,ex:"2026-04-16",r:"2026-04-19",py:"2026-05-07",s:"Energy",freq:"Semi-Annual",ex2:"2026-10-15",py2:"2026-11-05",d2:0.1013},
+{id:36,n:"ADNOC Gas",t:"ADNOCGAS",x:"ADX",d:0.025,p:3.15,ex:"2026-05-07",r:"2026-05-10",py:"2026-05-28",s:"Energy",freq:"Semi-Annual",ex2:"2026-10-29",py2:"2026-11-19",d2:0.025},
+{id:37,n:"ADNOC Drilling",t:"ADNOCDRILL",x:"ADX",d:0.035,p:4.2,ex:"2026-05-14",r:"2026-05-17",py:"2026-06-04",s:"Energy",freq:"Semi-Annual",ex2:"2026-11-12",py2:"2026-12-03",d2:0.035},
+{id:38,n:"Alpha Dhabi",t:"ALPHADHABI",x:"ADX",d:0.2,p:15.6,ex:"2026-04-30",r:"2026-05-03",py:"2026-05-21",s:"Conglomerate",freq:"Annual"},
+{id:39,n:"Borouge",t:"BOROUGE",x:"ADX",d:0.06,p:2.45,ex:"2026-05-21",r:"2026-05-24",py:"2026-06-11",s:"Chemicals",freq:"Semi-Annual",ex2:"2026-11-19",py2:"2026-12-10",d2:0.06},
+{id:40,n:"Dana Gas",t:"DANA",x:"ADX",d:0.04,p:0.62,ex:"2026-04-13",r:"2026-04-14",py:"2026-05-04",s:"Energy",freq:"Annual"},
+{id:41,n:"Multiply Group",t:"MULTIPLY",x:"ADX",d:0.05,p:2.1,ex:"2026-06-04",r:"2026-06-07",py:"2026-06-25",s:"Investment",freq:"Annual"},
+{id:42,n:"Abu Dhabi Nat. Hotels",t:"ADNH",x:"ADX",d:0.15,p:4.85,ex:"2026-04-20",r:"2026-04-21",py:"2026-05-11",s:"Hospitality",freq:"Annual"},
+{id:43,n:"TAQA",t:"TAQA",x:"ADX",d:0.09,p:4.7,ex:"2026-06-11",r:"2026-06-14",py:"2026-07-02",s:"Energy",freq:"Semi-Annual",ex2:"2026-12-10",py2:"2026-12-31",d2:0.09},
+{id:44,n:"Fertiglobe",t:"FERTIGLB",x:"ADX",d:0.075,p:2.8,ex:"2026-05-28",r:"2026-05-31",py:"2026-06-18",s:"Chemicals",freq:"Semi-Annual",ex2:"2026-11-26",py2:"2026-12-17",d2:0.075},
+{id:45,n:"Presight AI",t:"PRESIGHT",x:"ADX",d:0.03,p:1.95,ex:"2026-06-18",r:"2026-06-21",py:"2026-07-09",s:"Technology",freq:"Annual"},
+{id:46,n:"ADNOC L&S",t:"ADNOCLS",x:"ADX",d:0.03,p:3.85,ex:"2026-07-02",r:"2026-07-05",py:"2026-07-23",s:"Logistics",freq:"Semi-Annual",ex2:"2026-12-31",py2:"2027-01-22",d2:0.03},
+{id:47,n:"Americana Restaurants",t:"AMERICANA",x:"ADX",d:0.04,p:2.25,ex:"2026-06-25",r:"2026-06-28",py:"2026-07-16",s:"F&B",freq:"Annual"}
+];
+var favs=[],remD=7,thm='light',sq='',rc=10;
+function pad2(n){return n<10?'0'+n:''+n;}
+function bbd(ex){var p=ex.split('-'),dt=new Date(+p[0],+p[1]-1,+p[2]);dt.setDate(dt.getDate()-1);while(dt.getDay()===0||dt.getDay()===6)dt.setDate(dt.getDate()-1);return dt.getFullYear()+'-'+pad2(dt.getMonth()+1)+'-'+pad2(dt.getDate());}
+function fmtD(ds){var p=ds.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return+p[2]+' '+m[+p[1]-1]+' '+p[0];}
+function fmtS(ds){var p=ds.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return+p[2]+' '+m[+p[1]-1];}
+function dateToNum(ds){return+ds.replace(/-/g,'');}
+var i;for(i=0;i<S.length;i++){
+var s=S[i];
+s.y=((s.d/s.p)*100).toFixed(2);
+if(s.freq!=='Annual'&&s.d2){s.yTotal=(((s.d+s.d2)/s.p)*100).toFixed(2);}else{s.yTotal=s.y;}
+s.bb=bbd(s.ex);
+if(s.ex2)s.bb2=bbd(s.ex2);
+if(dateToNum(s.ex)>=dateToNum(TODAY)){s.nextEx=s.ex;s.nextBB=s.bb;s.nextPy=s.py;s.nextD=s.d;}
+else if(s.ex2&&dateToNum(s.ex2)>=dateToNum(TODAY)){s.nextEx=s.ex2;s.nextBB=s.bb2;s.nextPy=s.py2;s.nextD=s.d2;}
+else{s.nextEx=s.ex;s.nextBB=s.bb;s.nextPy=s.py;s.nextD=s.d;}
+}
+
+// UAE Public Holidays 2026 (Islamic dates are approximate - based on lunar calendar)
+var HOLIDAYS=[
+{d:"2026-01-01",n:"New Year's Day",closed:true},
+{d:"2026-01-27",n:"Isra'a Wal Mi'raj (approx)",closed:true},
+{d:"2026-03-20",n:"Eid Al Fitr (approx)",closed:true},
+{d:"2026-03-21",n:"Eid Al Fitr (approx)",closed:true},
+{d:"2026-03-22",n:"Eid Al Fitr (approx)",closed:true},
+{d:"2026-06-05",n:"Arafat Day (approx)",closed:true},
+{d:"2026-06-06",n:"Eid Al Adha (approx)",closed:true},
+{d:"2026-06-07",n:"Eid Al Adha (approx)",closed:true},
+{d:"2026-06-08",n:"Eid Al Adha (approx)",closed:true},
+{d:"2026-06-09",n:"Eid Al Adha (approx)",closed:true},
+{d:"2026-06-26",n:"Islamic New Year (approx)",closed:true},
+{d:"2026-09-04",n:"Prophet's Birthday (approx)",closed:true},
+{d:"2026-11-30",n:"Commemoration Day",closed:true},
+{d:"2026-12-02",n:"National Day",closed:true},
+{d:"2026-12-03",n:"National Day",closed:true}
+];
+function getHoliday(ds){for(var i=0;i<HOLIDAYS.length;i++){if(HOLIDAYS[i].d===ds)return HOLIDAYS[i];}return null;}
+function isF(id){return favs.indexOf(id)>-1;}
+function togF(id){var i=favs.indexOf(id);if(i>-1)favs.splice(i,1);else favs.push(id);render();}
+function togTheme(){thm=thm==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',thm);document.getElementById('tmB').textContent=thm==='dark'?'L':'D';}
+function saveRem(v){remD=+v;}
+function doSearch(v){sq=v.toLowerCase();render();}
+function setTimeFilter(v){timeFilter=v;mkAll();}
+function setSortMode(v){sortMode=v;mkAll();}
+function hMod(){document.getElementById('movl').classList.remove('show');}
+function sMod(ds){
+var evs=[],ii;
+for(ii=0;ii<S.length;ii++){
+var st=S[ii];
+if(st.bb===ds)evs.push({s:st,tp:'bb',lb:'Buy By (last day to buy)',dv:st.d});
+if(st.ex===ds)evs.push({s:st,tp:'ed',lb:'Ex-Dividend',dv:st.d});
+if(st.py===ds)evs.push({s:st,tp:'pm',lb:'Payment Date',dv:st.d});
+if(st.bb2===ds)evs.push({s:st,tp:'bb',lb:'Buy By - 2nd Dividend',dv:st.d2});
+if(st.ex2===ds)evs.push({s:st,tp:'ed',lb:'Ex-Dividend - 2nd',dv:st.d2});
+if(st.py2===ds)evs.push({s:st,tp:'pm',lb:'Payment - 2nd Dividend',dv:st.d2});
+}
+var hol=getHoliday(ds);
+if(!evs.length&&!hol)return;
+document.getElementById('moT').textContent='Events on '+fmtD(ds);
+var h='',j;
+var hol2=getHoliday(ds);
+if(hol2){h+='<div class="mev" style="border-left-color:var(--hol);background:rgba(168,85,247,0.06);margin-bottom:1rem"><strong style="color:var(--hol)">'+hol2.n+'</strong><br><small>'+(hol2.closed?'DFM & ADX markets are <strong>CLOSED</strong> on this day. You cannot buy or sell stocks.':'Markets may have shortened trading hours.')+'</small></div>';}
+for(j=0;j<evs.length;j++){
+var cl=evs[j].tp==='bb'?'tbb':(evs[j].tp==='ed'?'ted':'tpm');
+h+='<div class="mev '+cl+'"><strong>'+evs[j].lb+'</strong> - '+evs[j].s.n+' ('+evs[j].s.t+')<br><small style="color:var(--ts)">AED '+evs[j].dv.toFixed(3)+'/share | Yield: '+evs[j].s.yTotal+'% (total annual) | '+evs[j].s.x+' | '+evs[j].s.freq+'</small><br><button class="btn btnp" style="margin-top:.4rem;font-size:.72rem" onclick="dlICS('+evs[j].s.id+')">Download .ics</button></div>';
+}
+document.getElementById('moB').innerHTML=h;
+document.getElementById('movl').classList.add('show');
+}
+function dlICS(id){
+var s=null,ii;for(ii=0;ii<S.length;ii++)if(S[ii].id===id){s=S[ii];break;}
+if(!s)return;
+var rd=remD;
+var bb=s.nextBB.replace(/-/g,''),ex=s.nextEx.replace(/-/g,''),py=s.nextPy.replace(/-/g,'');
+var nw=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+var bbParts=s.nextBB.split('-');
+var remDate=new Date(+bbParts[0],+bbParts[1]-1,+bbParts[2]);
+remDate.setDate(remDate.getDate()-rd);
+var remStr=remDate.getFullYear()+('0'+(remDate.getMonth()+1)).slice(-2)+('0'+remDate.getDate()).slice(-2);
+var l=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UAE Div Tracker//EN','METHOD:PUBLISH',
+'X-WR-TIMEZONE:Asia/Dubai',
+'BEGIN:VEVENT','UID:rem-'+id+'-'+remStr+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+remStr+'T050000Z','DTEND:'+remStr+'T051000Z',
+'SUMMARY:REMINDER: Buy '+s.n+' ('+s.t+') - '+rd+' days before Buy-By date',
+'DESCRIPTION:This reminder is '+rd+' days prior to the Buy-By date ('+s.nextBB+').\nBuy '+s.n+' before '+s.nextBB+' to receive dividend of AED '+s.nextD.toFixed(3)+'/share (Yield: '+s.yTotal+'%).\nMarket opens 9:00 AM UAE.',
+'BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:'+rd+' days until Buy-By deadline for '+s.n,'END:VALARM',
+'END:VEVENT',
+'BEGIN:VEVENT','UID:bb-'+id+'-'+bb+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+bb+'T050000Z','DTEND:'+bb+'T051000Z',
+'SUMMARY:BUY BY TODAY: '+s.n+' ('+s.t+') - Last day to buy for dividend',
+'DESCRIPTION:Today is the LAST DAY to buy '+s.n+' to receive dividend of AED '+s.nextD.toFixed(3)+'/share (Yield: '+s.yTotal+'%).\nEx-Dividend is tomorrow - do not miss this deadline.\nMarket opens 9:00 AM UAE.',
+'BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:TODAY is the last day to buy '+s.n+' for dividend!','END:VALARM',
+'END:VEVENT',
+'BEGIN:VEVENT','UID:ex-'+id+'-'+ex+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+ex+'T050000Z','DTEND:'+ex+'T051000Z',
+'SUMMARY:EX-DIV: '+s.n+' ('+s.t+') - Too late to buy','DESCRIPTION:Ex-Dividend date for '+s.n+'. Buying today will NOT qualify for the dividend.','END:VEVENT',
+'BEGIN:VEVENT','UID:py-'+id+'-'+py+'@uaediv','DTSTAMP:'+nw,
+'DTSTART:'+py+'T050000Z','DTEND:'+py+'T051000Z',
+'SUMMARY:PAYMENT: '+s.n+' - AED '+s.nextD.toFixed(3)+'/share credited','DESCRIPTION:Dividend of AED '+s.nextD.toFixed(3)+'/share from '+s.n+' credited to your account. Settles in 1-2 business days.','END:VEVENT',
+'END:VCALENDAR'];
+var blob=new Blob([l.join('\r\n')],{type:'text/calendar'});
+var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=s.t+'_div.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+}
+function mkCal(){
+var el=document.getElementById('tab-cal');
+var h='';
+h+='<div class="info-box"><h3>How UAE Dividends Work</h3><div class="info-grid">';
+h+='<div class="info-item i-bb"><strong>Buy By Date (last purchase date)</strong><p>The last trading day you can buy the stock and still receive the dividend. This is 1 business day before the Ex-Dividend date. No minimum holding period required - buying on this day is enough.</p></div>';
+h+='<div class="info-item i-ed"><strong>Ex-Dividend Date</strong><p>From this date, the stock trades WITHOUT the dividend. If you buy on or after this date, you will NOT receive the upcoming dividend. You can sell on this date and still keep the dividend.</p></div>';
+h+='<div class="info-item i-py"><strong>Payment Date</strong><p>The company distributes the dividend to eligible shareholders. Cash appears in your brokerage account on this date or within 1-2 business days after, via DFM/ADX clearing.</p></div>';
+h+='</div></div>';
+h+='<div class="cleg"><span><span class="cdot bb"></span> Buy By</span><span><span class="cdot ed"></span> Ex-Dividend</span><span><span class="cdot pm"></span> Payment</span><span><span class="cdot td"></span> Today</span><span><span class="cdot hol"></span> Public Holiday (market closed)</span></div>';
+h+='<div class="cgrid">';
+var mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var yr=2026,m;
+for(m=0;m<12;m++){
+h+='<div class="mcard"><div class="mhdr">'+mn[m]+' '+yr+'</div><div class="mbody"><div class="wkrow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div><div class="dgrid">';
+var fd=new Date(yr,m,1).getDay(),dm=new Date(yr,m+1,0).getDate(),d;
+for(d=0;d<fd;d++)h+='<div class="dcell"></div>';
+for(d=1;d<=dm;d++){
+var ds=yr+'-'+pad2(m+1)+'-'+pad2(d);
+var hbb=false,hed=false,hpm=false,ii;
+for(ii=0;ii<S.length;ii++){
+var st=S[ii];
+if(st.bb===ds||st.bb2===ds)hbb=true;
+if(st.ex===ds||st.ex2===ds)hed=true;
+if(st.py===ds||st.py2===ds)hpm=true;
+}
+var hol=getHoliday(ds);
+var isToday=(ds===TODAY);
+var cls='dcell';
+if(hbb||hed||hpm)cls+=' he';
+if(isToday)cls+=' today';
+if(hol)cls+=' holiday';
+if(hbb||hed||hpm||hol){
+h+='<div class="'+cls+'" onclick="sMod(\''+ds+'\')">'+d+'<div class="ddots">';
+if(hbb)h+='<span class="dt bb"></span>';if(hed)h+='<span class="dt ed"></span>';if(hpm)h+='<span class="dt pm"></span>';
+if(hol)h+='<span class="dt hol" title="'+hol.n+(hol.closed?' - Market Closed':'')+'"></span>';
+h+='</div></div>';
+}else{
+h+='<div class="'+cls+'">'+d+'</div>';
+}
+}
+h+='</div></div></div>';
+}
+h+='</div>';
+el.innerHTML=h;
+}
+function mkRank(){
+var el=document.getElementById('tab-rank');
+var sr=S.slice();
+if(rankFilter==='upcoming'){sr=sr.filter(function(s){return dateToNum(s.nextBB)>=dateToNum(TODAY);});}
+if(rankSort==='yield'){sr.sort(function(a,b){return+b.yTotal - +a.yTotal;});}
+else{sr.sort(function(a,b){return dateToNum(a.nextBB)-dateToNum(b.nextBB);});}
+var ds=sr.slice(0,rc);
+var h='<div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;align-items:center">';
+h+='<div class="tgrp" style="margin-bottom:0"><button class="tgbtn'+(rc===10?' active':'')+'" onclick="rc=10;mkRank()">Top 10</button><button class="tgbtn'+(rc===20?' active':'')+'" onclick="rc=20;mkRank()">Top 20</button><button class="tgbtn'+(rc===30?' active':'')+'" onclick="rc=30;mkRank()">All</button></div>';
+h+='<div class="tgrp" style="margin-bottom:0"><button class="tgbtn'+(rankFilter==='upcoming'?' active':'')+'" onclick="rankFilter=\'upcoming\';mkRank()">Upcoming Only</button><button class="tgbtn'+(rankFilter==='all'?' active':'')+'" onclick="rankFilter=\'all\';mkRank()">Include Past</button></div>';
+h+='<div class="tgrp" style="margin-bottom:0"><button class="tgbtn'+(rankSort==='yield'?' active':'')+'" onclick="rankSort=\'yield\';mkRank()">Sort: Yield</button><button class="tgbtn'+(rankSort==='date'?' active':'')+'" onclick="rankSort=\'date\';mkRank()">Sort: Buy-By Date</button></div>';
+h+='</div>';
+h+='<div style="overflow-x:auto;border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--bd)"><table class="rtbl"><thead><tr><th>#</th><th>Company</th><th>Exch</th><th>Dividend</th><th>Yield</th><th>Freq</th><th>Next Buy By</th><th>Next Ex-Date</th><th>Fav</th></tr></thead><tbody>';
+var i;
+for(i=0;i<ds.length;i++){
+var s=ds[i],rk=i+1;
+var rc2=rk<=1?'rb1':(rk<=2?'rb2':(rk<=3?'rb3':'rbo'));
+var ec=s.x==='DFM'?'exb-dfm':'exb-adx';
+var fs=isF(s.id)?'active':'';
+var isPast=dateToNum(s.nextBB)<dateToNum(TODAY);
+var bbDisplay=isPast?'<span style="color:var(--exd);font-size:.7rem">Passed</span>':fmtS(s.nextBB);
+var exDisplay=isPast?'<span style="color:var(--ts);text-decoration:line-through">'+fmtS(s.nextEx)+'</span>':fmtS(s.nextEx);
+h+='<tr style="'+(isPast?'opacity:.55':'')+'"><td><span class="rb '+rc2+'">'+rk+'</span></td><td><strong>'+s.n+'</strong><br><small style="color:var(--ts)">'+s.t+' | '+s.s+'</small></td><td><span class="exb '+ec+'">'+s.x+'</span></td><td>AED '+s.nextD.toFixed(3)+'</td><td><strong style="color:var(--p)">'+s.yTotal+'%</strong></td><td>'+s.freq+'</td><td>'+bbDisplay+'</td><td>'+exDisplay+'</td><td><button class="bstar '+fs+'" onclick="togF('+s.id+')">'+(isF(s.id)?'\u2605':'\u2606')+'</button></td></tr>';
+}
+h+='</tbody></table></div>';
+el.innerHTML=h;
+}
+function mkCard(s){
+var fs=isF(s.id)?'active':'';
+var ec=s.x==='DFM'?'exb-dfm':'exb-adx';
+var ft=isF(s.id)?'Remove Fav':'Add Fav';
+var nextLabel='';
+if(dateToNum(s.nextBB)>=dateToNum(TODAY)){
+var daysUntil=Math.round((new Date(s.nextBB)-new Date(TODAY))/(86400000));
+if(daysUntil<=7)nextLabel='<span class="next-badge">Buy in '+daysUntil+' days</span>';
+else if(daysUntil<=14)nextLabel='<span class="next-badge">'+daysUntil+' days</span>';
+}
+var h='<div class="scard"><div class="sch"><div><div class="sn">'+s.n+nextLabel+'</div><div class="st">'+s.t+' | '+s.s+' | '+s.freq+'</div></div><div style="display:flex;align-items:center;gap:.4rem"><span class="exb '+ec+'">'+s.x+'</span><button class="bstar '+fs+'" onclick="togF('+s.id+')">'+(isF(s.id)?'\u2605':'\u2606')+'</button></div></div>';
+h+='<div class="sy">'+s.yTotal+'% <small style="font-size:.7rem;font-weight:400;color:var(--ts)">annual yield</small></div>';
+h+='<div class="sd">AED '+s.nextD.toFixed(3)+'/share (next payout) | Price: AED '+s.p.toFixed(2)+'</div>';
+h+='<div class="sdates"><div><div class="dlbl" style="color:var(--bby)">Next Buy By</div><div class="dval">'+fmtS(s.nextBB)+'</div></div><div><div class="dlbl" style="color:var(--exd)">Next Ex-Div</div><div class="dval">'+fmtS(s.nextEx)+'</div></div><div><div class="dlbl">Next Payment</div><div class="dval">'+fmtS(s.nextPy)+'</div></div><div><div class="dlbl" style="color:var(--pay)">Account Credit</div><div class="dval">'+fmtS(s.nextPy)+' +1-2d</div></div></div>';
+if(s.freq!=='Annual'){h+='<div class="snote">This stock pays dividends '+s.freq.toLowerCase()+'. Next payout: AED '+s.nextD.toFixed(3)+'/share on '+fmtD(s.nextPy)+'. Total annual: AED '+(s.d+(s.d2||0)).toFixed(3)+'/share.</div>';}
+else{h+='<div class="snote">Annual dividend of AED '+s.d.toFixed(3)+'/share credited on '+fmtD(s.nextPy)+'. Settles in brokerage within 1-2 business days.</div>';}
+h+='<div class="sacts"><button class="btn btnp" onclick="dlICS('+s.id+')">Download .ics</button><a href="'+IBKR_URL+'" target="_blank" class="btn-ibkr">Trade</a><button class="btn btno" onclick="togF('+s.id+')">'+ft+'</button></div></div>';
+return h;
+}
+function mkAll(){
+var el=document.getElementById('tab-all');
+var fl=[],i;
+for(i=0;i<S.length;i++){
+var s=S[i];
+if(sq&&s.n.toLowerCase().indexOf(sq)===-1&&s.t.toLowerCase().indexOf(sq)===-1&&s.x.toLowerCase().indexOf(sq)===-1&&s.s.toLowerCase().indexOf(sq)===-1)continue;
+if(timeFilter!=='all'){
+var nbb=dateToNum(s.nextBB),td=dateToNum(TODAY);
+if(nbb<td)continue;
+var diff=Math.round((new Date(s.nextBB)-new Date(TODAY))/(86400000));
+if(timeFilter==='7'&&diff>7)continue;
+if(timeFilter==='14'&&diff>14)continue;
+if(timeFilter==='30'&&diff>30)continue;
+if(timeFilter==='60'&&diff>60)continue;
+}
+fl.push(s);
+}
+if(!fl.length){el.innerHTML='<div class="filter-bar"><label>Show upcoming:</label><select onchange="setTimeFilter(this.value)"><option value="all"'+(timeFilter==='all'?' selected':'')+'>All stocks</option><option value="7"'+(timeFilter==='7'?' selected':'')+'>Next 7 days</option><option value="14"'+(timeFilter==='14'?' selected':'')+'>Next 2 weeks</option><option value="30"'+(timeFilter==='30'?' selected':'')+'>Next 30 days</option><option value="60"'+(timeFilter==='60'?' selected':'')+'>Next 60 days</option></select><label style="margin-left:1rem">Sort by:</label><select onchange="setSortMode(this.value)"><option value="date"'+(sortMode==='date'?' selected':'')+'>Next Buy-By Date</option><option value="yield"'+(sortMode==='yield'?' selected':'')+'>Highest Yield</option></select></div><div class="empty"><h3>No upcoming dividends in this timeframe</h3><p>Try a longer period or check back later</p></div>';return;}
+if(sortMode==='yield'){fl.sort(function(a,b){return+b.yTotal - +a.yTotal;});}else{fl.sort(function(a,b){var aFut=dateToNum(a.nextBB)>=dateToNum(TODAY)?0:1;var bFut=dateToNum(b.nextBB)>=dateToNum(TODAY)?0:1;if(aFut!==bFut)return aFut-bFut;return dateToNum(a.nextBB)-dateToNum(b.nextBB);});}
+var h='<div class="filter-bar"><label>Show upcoming:</label><select onchange="setTimeFilter(this.value)"><option value="all"'+(timeFilter==='all'?' selected':'')+'>All stocks</option><option value="7"'+(timeFilter==='7'?' selected':'')+'>Next 7 days</option><option value="14"'+(timeFilter==='14'?' selected':'')+'>Next 2 weeks</option><option value="30"'+(timeFilter==='30'?' selected':'')+'>Next 30 days</option><option value="60"'+(timeFilter==='60'?' selected':'')+'>Next 60 days</option></select><label style="margin-left:1rem">Sort by:</label><select onchange="setSortMode(this.value)"><option value="date"'+(sortMode==='date'?' selected':'')+'>Next Buy-By Date</option><option value="yield"'+(sortMode==='yield'?' selected':'')+'>Highest Yield</option></select><span style="font-size:.77rem;color:var(--ts);margin-left:.6rem;font-weight:500">'+fl.length+' stocks</span></div>';
+h+='<div class="sgrid">';
+for(i=0;i<fl.length;i++)h+=mkCard(fl[i]);
+h+='</div>';el.innerHTML=h;
+}
+function mkFav(){
+var el=document.getElementById('tab-fav');
+var fl=[],i;
+for(i=0;i<S.length;i++)if(isF(S[i].id))fl.push(S[i]);
+if(!fl.length){el.innerHTML='<div class="empty"><h3>No favorites yet</h3><p>Star stocks to build your watchlist</p></div>';return;}
+fl.sort(function(a,b){return dateToNum(a.nextBB)-dateToNum(b.nextBB);});
+var h='<div class="sgrid">';for(i=0;i<fl.length;i++)h+=mkCard(fl[i]);
+h+='</div>';el.innerHTML=h;
+}
+function render(){mkRank();mkAll();mkFav();}
+function initNav(){
+var tabs=[{id:'cal',lb:'Calendar'},{id:'rank',lb:'Top Dividends'},{id:'fav',lb:'Favorites'},{id:'all',lb:'All Stocks'}];
+var nav=document.getElementById('navB'),h='',i;
+for(i=0;i<tabs.length;i++)h+='<button class="ntab'+(i===0?' active':'')+'" data-t="'+tabs[i].id+'">'+tabs[i].lb+'</button>';
+nav.innerHTML=h;
+var btns=nav.querySelectorAll('.ntab');
+for(i=0;i<btns.length;i++){
+btns[i].addEventListener('click',function(){
+var all=document.querySelectorAll('.ntab'),tc=document.querySelectorAll('.tc'),j;
+for(j=0;j<all.length;j++)all[j].classList.remove('active');
+for(j=0;j<tc.length;j++)tc[j].classList.remove('active');
+this.classList.add('active');
+var t=document.getElementById('tab-'+this.getAttribute('data-t'));
+if(t)t.classList.add('active');
+});
+}
+function checkNavScroll(){
+if(nav.scrollWidth>nav.clientWidth&&nav.scrollLeft<nav.scrollWidth-nav.clientWidth-10){nav.classList.add('scroll-right');}else{nav.classList.remove('scroll-right');}
+}
+nav.addEventListener('scroll',checkNavScroll);
+checkNavScroll();
+}
+initNav();
+mkCal();
+render();
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Dividend Tracker 2026 - DFM & ADX Dividend Calendar, Ex-Dates & Yields</title>
+<meta name="description" content="Free UAE dividend calendar and tracker for DFM and ADX stocks. See ex-dividend dates, buy-by deadlines, payment dates, and yields for 47+ UAE-listed companies. Download Outlook reminders.">
+<meta name="keywords" content="UAE dividends, DFM dividend calendar, ADX dividend dates, Dubai stock dividends, Abu Dhabi stocks, ex-dividend date UAE, dividend yield UAE, Emaar dividend, ADNOC dividend, Etisalat dividend, UAE stock market, DFM calendar 2026, ADX calendar 2026">
+<meta name="author" content="UAE Dividend Tracker">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eisenhardtrobin-netizen.github.io/uae-dividend-tracker/">
+<meta property="og:title" content="UAE Dividend Tracker - DFM & ADX Dividend Calendar 2026">
+<meta property="og:description" content="Free tool to track dividend dates, yields, and buy-by deadlines for all 47 stocks on DFM and ADX. Get Outlook calendar reminders so you never miss a dividend.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eisenhardtrobin-netizen.github.io/uae-dividend-tracker/">
+<meta property="og:locale" content="en_AE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UAE Dividend Tracker - DFM & ADX Dividend Calendar 2026">
+<meta name="twitter:description" content="Free tool to track dividend dates, yields, and buy-by deadlines for 47 UAE stocks. Download .ics reminders for Outlook.">
+<meta name="theme-color" content="#0d9488">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"UAE Dividend Tracker","url":"https://eisenhardtrobin-netizen.github.io/uae-dividend-tracker/","description":"Free tool to track dividend payment dates, ex-dividend dates, buy-by deadlines, and yields for all stocks listed on DFM (Dubai Financial Market) and ADX (Abu Dhabi Securities Exchange).","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Robin Eisenhardt"}}
+</script>
+<style>
+:root{--p:#0d9488;--pd:#0f766e;--pl:#ccfbf1;--bg:#f5f7fa;--sf:#ffffff;--sfh:#f1f5f9;--tx:#1e293b;--ts:#64748b;--bd:#e2e8f0;--r:14px;--rs:10px;--exd:#ef4444;--bby:#f59e0b;--pay:#22c55e;--star:#eab308;--today:#6366f1;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);--shadow-lg:0 4px 12px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.06);--shadow-xl:0 8px 24px rgba(0,0,0,.1),0 24px 48px rgba(0,0,0,.08)}
+[data-theme="dark"]{--bg:#0c1222;--sf:#1a2332;--sfh:#243044;--tx:#f1f5f9;--ts:#94a3b8;--bd:#2d3f55;--pl:#134e4a;--shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);--shadow-lg:0 4px 12px rgba(0,0,0,.25),0 12px 32px rgba(0,0,0,.2);--shadow-xl:0 8px 24px rgba(0,0,0,.3),0 24px 48px rgba(0,0,0,.25)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:linear-gradient(135deg,#0d9488 0%,#0891b2 40%,#0e7490 70%,#155e75 100%);color:#fff;padding:1.5rem 2rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,255,255,.08) 0%,transparent 40%),radial-gradient(ellipse at 60% 80%,rgba(255,255,255,.05) 0%,transparent 30%);pointer-events:none}
+header::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L30 0 L60 30 L30 60Z' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");pointer-events:none}
+.htitle{font-size:1.5rem;font-weight:800;flex:1;position:relative;z-index:1;letter-spacing:-.02em}
+.htitle small{font-weight:400;opacity:.8;font-size:.78rem;display:block;margin-top:.2rem;letter-spacing:0}
+.hctrl{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;position:relative;z-index:1}
+.hctrl select,.hctrl input{padding:.45rem .7rem;border-radius:var(--rs);border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-size:.82rem;backdrop-filter:blur(4px);transition:all .2s}
+.hctrl select:hover,.hctrl input:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4)}
+.hctrl select:focus,.hctrl input:focus{outline:none;background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);box-shadow:0 0 0 3px rgba(255,255,255,.1)}
+.hctrl select option{color:#333;background:#fff}
+.hctrl input::placeholder{color:rgba(255,255,255,.65)}
+.rem-wrap{display:flex;align-items:center;gap:.4rem;position:relative}
+.rem-help{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-size:.7rem;display:flex;align-items:center;justify-content:center;cursor:help;font-weight:700;transition:background .2s}
+.rem-help:hover{background:rgba(255,255,255,.35)}
+.rem-tip{display:none;position:absolute;top:120%;right:0;background:#1e293b;color:#f1f5f9;padding:.8rem;border-radius:var(--rs);font-size:.74rem;width:250px;z-index:100;line-height:1.5;box-shadow:var(--shadow-xl)}
+.rem-wrap:hover .rem-tip{display:block}
+.tbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.tbtn:hover{background:rgba(255,255,255,.25);transform:scale(1.05)}
+nav{display:flex;background:var(--sf);border-bottom:1px solid var(--bd);overflow-x:auto;padding:0 1.5rem;box-shadow:var(--shadow);position:relative;scrollbar-width:none;-ms-overflow-style:none}
+nav::-webkit-scrollbar{display:none}
+nav::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,var(--sf));pointer-events:none;opacity:0;transition:opacity .2s}
+nav.scroll-right::after{opacity:1}
+.ntab{padding:.9rem 1.3rem;border:none;background:none;color:var(--ts);font-size:.85rem;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;min-height:44px;min-width:44px}
+.ntab:hover{color:var(--tx);background:var(--sfh)}
+.ntab.active{color:var(--p);border-bottom-color:var(--p)}
+main{padding:2rem;max-width:1440px;margin:0 auto}
+.tc{display:none}.tc.active{display:block}
+.info-box{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.5rem;margin-bottom:1.8rem;box-shadow:var(--shadow);transition:box-shadow .3s}
+.info-box:hover{box-shadow:var(--shadow-lg)}
+.info-box h3{font-size:1rem;margin-bottom:1rem;color:var(--p);font-weight:700;letter-spacing:-.01em}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.info-item{padding:1rem;border-radius:var(--rs);border-left:4px solid var(--bd);transition:transform .2s}
+.info-item:hover{transform:translateX(2px)}
+.info-item.i-bb{border-left-color:var(--bby);background:rgba(245,158,11,.04)}
+.info-item.i-ed{border-left-color:var(--exd);background:rgba(239,68,68,.04)}
+.info-item.i-py{border-left-color:var(--pay);background:rgba(34,197,94,.04)}
+.info-item strong{font-size:.88rem;display:block;margin-bottom:.4rem}
+.info-item p{font-size:.77rem;color:var(--ts);margin:0;line-height:1.5}
+.cleg{display:flex;gap:1.8rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.cleg span{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ts);font-weight:500}
+.cdot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.cdot.bb{background:var(--bby)}.cdot.ed{background:var(--exd)}.cdot.pm{background:var(--pay)}.cdot.td{background:var(--today)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem}
+.mcard{background:var(--sf);border-radius:var(--r);border:1px solid var(--bd);overflow:hidden;box-shadow:var(--shadow);transition:all .3s}
+.mcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.mhdr{padding:.7rem 1rem;font-weight:700;font-size:.88rem;background:var(--sfh);border-bottom:1px solid var(--bd);letter-spacing:-.01em}
+.mbody{padding:.5rem}
+.wkrow{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:.68rem;color:var(--ts);font-weight:700;margin-bottom:.3rem;text-transform:uppercase}
+.dgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dcell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.74rem;border-radius:6px;position:relative;transition:background .15s}
+.dcell.he{cursor:pointer;font-weight:700}.dcell.he:hover{background:var(--sfh)}
+.dcell.today{background:var(--today);color:#fff;border-radius:50%;font-weight:700}
+
+.dcell.holiday{background:rgba(168,85,247,0.08);border:1px dashed var(--hol);border-radius:4px}
+.dcell.holiday.today{border:1px dashed #fff}
+.hol-label{font-size:0.55rem;color:var(--hol);position:absolute;bottom:0;white-space:nowrap;overflow:hidden;max-width:100%}
+.cdot.hol{background:var(--hol)}
+.ddots{display:flex;gap:2px;position:absolute;bottom:2px}
+.dt{width:4px;height:4px;border-radius:50%}
+.dt.bb{background:var(--bby)}.dt.ed{background:var(--exd)}.dt.pm{background:var(--pay)}
+.dt.hol{background:var(--hol)}
+.tgrp{display:flex;gap:.5rem;margin-bottom:1rem}
+.tgbtn{padding:.5rem 1rem;border:1px solid var(--bd);border-radius:var(--rs);background:var(--sf);color:var(--ts);cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;min-height:44px;display:flex;align-items:center}
+.tgbtn:hover{border-color:var(--p);color:var(--p)}
+.tgbtn.active{background:var(--p);color:#fff;border-color:var(--p);box-shadow:0 2px 8px rgba(13,148,136,.3)}
+.rtbl{width:100%;border-collapse:collapse;font-size:.82rem;background:var(--sf)}
+.rtbl th{text-align:left;padding:.7rem .8rem;color:var(--ts);font-weight:700;border-bottom:2px solid var(--bd);font-size:.72rem;text-transform:uppercase;letter-spacing:.03em}
+.rtbl td{padding:.7rem .8rem;border-bottom:1px solid var(--bd);vertical-align:middle}
+.rtbl tr{transition:background .15s}
+.rtbl tr:hover td{background:var(--sfh)}
+.rb{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem}
+.rb1{background:#fef3c7;color:#92400e}.rb2{background:#e5e7eb;color:#374151}.rb3{background:#fed7aa;color:#9a3412}.rbo{background:var(--sfh);color:var(--ts)}
+.exb{padding:.2rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700;letter-spacing:.02em}
+.exb-dfm{background:#dbeafe;color:#1e40af}.exb-adx{background:#dcfce7;color:#166534}
+[data-theme="dark"] .exb-dfm{background:#1e3a5f;color:#93c5fd}
+[data-theme="dark"] .exb-adx{background:#14532d;color:#86efac}
+.filter-bar{display:flex;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap;align-items:center}
+.filter-bar label{font-size:.82rem;color:var(--ts);font-weight:600}
+.filter-bar select{padding:.4rem .7rem;border-radius:var(--rs);border:1px solid var(--bd);background:var(--sf);color:var(--tx);font-size:.82rem;min-height:44px;transition:border-color .2s}
+.filter-bar select:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px rgba(13,148,136,.1)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.2rem}
+.scard{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.3rem;transition:all .3s;box-shadow:var(--shadow)}
+.scard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:rgba(13,148,136,.2)}
+.sch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+.sn{font-weight:700;font-size:.98rem;letter-spacing:-.01em}.st{color:var(--ts);font-size:.8rem}
+.sy{font-size:1.5rem;font-weight:800;color:var(--p);margin-bottom:.3rem;letter-spacing:-.02em}
+.sd{color:var(--ts);font-size:.8rem;margin-bottom:.9rem}
+.sdates{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin-bottom:.9rem;padding:.8rem;background:var(--sfh);border-radius:var(--rs)}
+.dlbl{font-size:.7rem;color:var(--ts);font-weight:600;text-transform:uppercase;letter-spacing:.03em}.dval{font-size:.84rem;font-weight:700;margin-top:.1rem}
+.snote{font-size:.74rem;color:var(--ts);padding:.6rem .8rem;background:var(--pl);border-radius:var(--rs);margin-bottom:.8rem;line-height:1.5}
+.sacts{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.btn{padding:.5rem .9rem;border-radius:var(--rs);border:none;cursor:pointer;font-size:.78rem;font-weight:600;transition:all .2s;min-height:36px;display:inline-flex;align-items:center}
+.btnp{background:var(--p);color:#fff}.btnp:hover{background:var(--pd);box-shadow:0 2px 8px rgba(13,148,136,.3)}
+.btno{background:transparent;border:1px solid var(--bd);color:var(--tx)}.btno:hover{background:var(--sfh);border-color:var(--ts)}
+.btn-ibkr{display:none;background:linear-gradient(135deg,#c62828,#b71c1c);color:#fff;font-size:.72rem;padding:.4rem .7rem;border:none;border-radius:6px;cursor:pointer;font-weight:600;transition:all .2s;min-height:32px;display:inline-flex;align-items:center;gap:.3rem;text-decoration:none}
+.btn-ibkr:hover{background:linear-gradient(135deg,#d32f2f,#c62828);box-shadow:0 2px 8px rgba(198,40,40,.3);transform:translateY(-1px)}
+.bstar{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--ts);transition:all .2s;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.bstar.active{color:var(--star)}
+.bstar:hover{transform:scale(1.15);background:var(--sfh)}
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.mov.show{display:flex}
+.modal{background:var(--sf);border-radius:var(--r);max-width:520px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:var(--shadow-xl)}
+.moh{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.3rem;border-bottom:1px solid var(--bd)}
+.moh h3{font-size:1rem;font-weight:700}
+.moc{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--ts);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;min-width:44px;min-height:44px}
+.moc:hover{background:var(--sfh);color:var(--tx)}
+.mob{padding:1.3rem}
+.mev{padding:.8rem;border-radius:var(--rs);margin-bottom:.8rem;border-left:4px solid var(--bd);transition:transform .15s}
+.mev:hover{transform:translateX(2px)}
+.mev.tbb{border-left-color:var(--bby);background:rgba(245,158,11,.05)}
+.mev.ted{border-left-color:var(--exd);background:rgba(239,68,68,.05)}
+.mev.tpm{border-left-color:var(--pay);background:rgba(34,197,94,.05)}
+.empty{text-align:center;padding:4rem 1.5rem;color:var(--ts)}
+.empty h3{margin:.6rem 0;color:var(--tx);font-size:1.1rem}
+.ftr{text-align:center;padding:1.2rem 1.5rem;font-size:.74rem;color:var(--ts);border-top:1px solid var(--bd);line-height:1.7;background:var(--sf)}
+.ftr a{color:var(--p);text-decoration:none}
+.ftr a:hover{text-decoration:underline}
+.next-badge{display:inline-block;padding:.15rem .5rem;border-radius:6px;font-size:.67rem;font-weight:700;background:#ede9fe;color:#6d28d9;margin-left:.4rem}
+[data-theme="dark"] .next-badge{background:#3b0764;color:#c4b5fd}
+.kofi-float{position:fixed;bottom:24px;right:24px;z-index:900;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;background:#13C3FF;color:#fff;border-radius:50px;font-size:.8rem;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(19,195,255,.35);transition:all .3s;cursor:pointer}
+.kofi-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 24px rgba(19,195,255,.45)}
+.kofi-float:active{transform:translateY(0) scale(.98)}
+@media(max-width:768px){
 header{padding:1.2rem 1rem;flex-direction:column;align-items:flex-start;gap:.8rem}
 .htitle{font-size:1.2rem;width:100%}
 .hctrl{width:100%;justify-content:flex-start}
