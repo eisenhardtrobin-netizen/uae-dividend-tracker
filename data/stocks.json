@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-06-01",
   "year": 2026,
-  "stockCount": 44,
+  "stockCount": 45,
   "sources": {
     "DFM": {
       "url": "https://www.dfm.ae/investing/services/dividends-distribution-summary",
-      "count": 44
+      "count": 45
     },
     "ADX": {
       "url": "https://www.adx.ae/en/investors/investors-information/dividend-distribution",
@@ -13,49 +13,455 @@
     }
   },
   "stocks": [
-    {"ticker":"DIN","dividend_aed":1.0,"ex_date":"2026-03-25","entitlement_date":"2026-03-24","payment_date":"2026-04-07","yield":200.0,"price":0.5},
-    {"ticker":"ORIENT","dividend_aed":1.0,"ex_date":"2026-04-23","entitlement_date":"2026-04-22","payment_date":"2026-05-07","yield":62.5,"price":1.6},
-    {"ticker":"NGI","dividend_aed":0.45,"ex_date":"2026-04-23","entitlement_date":"2026-04-22","payment_date":"2026-05-04","yield":52.94,"price":0.85},
-    {"ticker":"UFC","dividend_aed":0.5,"ex_date":"2026-04-10","entitlement_date":"2026-04-09","payment_date":"2026-04-22","yield":33.33,"price":1.5},
-    {"ticker":"TALABAT","dividend_aed":0.8625,"ex_date":"2026-04-22","entitlement_date":"2026-04-21","payment_date":"2026-05-12","yield":30.8,"price":2.8},
-    {"ticker":"AMLAK","dividend_aed":0.49,"ex_date":"2026-05-01","entitlement_date":"2026-04-30","payment_date":"2026-05-15","yield":22.79,"price":2.15},
-    {"ticker":"DRC","dividend_aed":1.1,"ex_date":"2026-04-10","entitlement_date":"2026-04-09","payment_date":"2026-04-28","yield":21.15,"price":5.2},
-    {"ticker":"SUKOON","dividend_aed":0.25,"ex_date":"2026-03-11","entitlement_date":"2026-03-10","payment_date":"2026-03-26","yield":19.23,"price":1.3},
-    {"ticker":"EMAARDEV","dividend_aed":1.0,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-15","yield":17.24,"price":5.8},
-    {"ticker":"ALLIANCE","dividend_aed":0.3,"ex_date":"2026-04-17","entitlement_date":"2026-04-16","payment_date":"2026-05-01","yield":16.67,"price":1.8},
-    {"ticker":"EMPOWER","dividend_aed":0.4375,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-23","yield":15.09,"price":2.9},
-    {"ticker":"EMAAR","dividend_aed":1.0,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-22","yield":12.2,"price":8.2},
-    {"ticker":"UPP","dividend_aed":0.045,"ex_date":"2026-04-16","entitlement_date":"2026-04-15","payment_date":"2026-04-30","yield":11.84,"price":0.38},
-    {"ticker":"EIICAPITAL","dividend_aed":0.125,"ex_date":"2026-05-04","entitlement_date":"2026-05-04","payment_date":"2026-05-13","yield":11.36,"price":1.1},
-    {"ticker":"DIC","dividend_aed":0.25,"ex_date":"2026-05-01","entitlement_date":"2026-04-30","payment_date":"2026-05-21","yield":10.87,"price":2.3},
-    {"ticker":"UNIKAI","dividend_aed":0.3,"ex_date":"2026-04-24","entitlement_date":"2026-04-23","payment_date":"2026-05-08","yield":10.71,"price":2.8},
-    {"ticker":"AIRARABIA","dividend_aed":0.3,"ex_date":"2026-03-18","entitlement_date":"2026-03-17","payment_date":"2026-04-10","yield":9.37,"price":3.2},
-    {"ticker":"DTC","dividend_aed":0.0568,"ex_date":"2026-04-16","entitlement_date":"2026-04-15","payment_date":"2026-04-28","yield":8.11,"price":0.7},
-    {"ticker":"AMANAT","dividend_aed":0.07,"ex_date":"2026-04-09","entitlement_date":"2026-04-08","payment_date":"2026-04-17","yield":7.95,"price":0.88},
-    {"ticker":"DUBAIRESI","dividend_aed":0.0423,"ex_date":"2026-03-18","entitlement_date":"2026-03-17","payment_date":"2026-04-01","yield":7.69,"price":0.55},
-    {"ticker":"ALRAMZ","dividend_aed":0.07,"ex_date":"2026-05-01","entitlement_date":"2026-04-30","payment_date":"2026-05-18","yield":7.37,"price":0.95},
-    {"ticker":"DEYAAR","dividend_aed":0.05,"ex_date":"2026-04-17","entitlement_date":"2026-04-16","payment_date":"2026-04-29","yield":7.35,"price":0.68},
-    {"ticker":"NCC","dividend_aed":0.25,"ex_date":"2026-04-24","entitlement_date":"2026-04-23","payment_date":"2026-05-06","yield":7.14,"price":3.5},
-    {"ticker":"CBD","dividend_aed":0.5862,"ex_date":"2026-03-06","entitlement_date":"2026-03-05","payment_date":"2026-03-12","yield":6.9,"price":8.5},
-    {"ticker":"SALAM_BAH","dividend_aed":0.08,"ex_date":"2026-03-16","entitlement_date":"2026-03-13","payment_date":"2026-04-01","yield":6.67,"price":1.2},
-    {"ticker":"AJMANBANK","dividend_aed":0.0918,"ex_date":"2026-03-12","entitlement_date":"2026-03-11","payment_date":"2026-03-24","yield":6.33,"price":1.45},
-    {"ticker":"GFH","dividend_aed":0.0811,"ex_date":"2026-03-31","entitlement_date":"2026-05-30","payment_date":"2026-04-15","yield":6.01,"price":1.35},
-    {"ticker":"DU","dividend_aed":0.4,"ex_date":"2026-04-08","entitlement_date":"2026-04-07","payment_date":"2026-04-29","yield":5.88,"price":6.8},
-    {"ticker":"DIB","dividend_aed":0.35,"ex_date":"2026-04-10","entitlement_date":"2026-04-09","payment_date":"2026-04-16","yield":5.47,"price":6.4},
-    {"ticker":"EMIRATESNBD","dividend_aed":1.0,"ex_date":"2026-02-26","entitlement_date":"2026-02-25","payment_date":"2026-03-02","yield":5.41,"price":18.5},
-    {"ticker":"MASQ","dividend_aed":10.2,"ex_date":"2026-03-18","entitlement_date":"2026-03-17","payment_date":"2026-03-30","yield":4.86,"price":210.0},
-    {"ticker":"DNIR","dividend_aed":0.15,"ex_date":"2026-04-24","entitlement_date":"2026-04-23","payment_date":"2026-05-05","yield":3.95,"price":3.8},
-    {"ticker":"DFM","dividend_aed":0.065,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-13","yield":3.51,"price":1.85},
-    {"ticker":"BHMCAPITAL","dividend_aed":0.05,"ex_date":"2026-04-29","entitlement_date":"2026-04-28","payment_date":"2026-05-13","yield":3.33,"price":1.5},
-    {"ticker":"AMCREIT","dividend_aed":0.0375,"ex_date":"2026-03-24","entitlement_date":"2026-03-23","payment_date":"2026-04-09","yield":3.12,"price":1.2},
-    {"ticker":"UNIONCOOP","dividend_aed":0.14,"ex_date":"2026-04-16","entitlement_date":"2026-04-15","payment_date":"2026-04-28","yield":3.11,"price":4.5},
-    {"ticker":"SALIK","dividend_aed":0.1187,"ex_date":"2026-04-17","entitlement_date":"2026-04-16","payment_date":"2026-04-27","yield":2.9,"price":4.1},
-    {"ticker":"MF","dividend_aed":0.0333,"ex_date":"2026-03-26","entitlement_date":"2026-03-25","payment_date":"2026-05-01","yield":2.78,"price":1.2},
-    {"ticker":"TECOM","dividend_aed":0.088,"ex_date":"2026-03-18","entitlement_date":"2026-03-17","payment_date":"2026-03-27","yield":2.59,"price":3.4},
-    {"ticker":"PARKIN","dividend_aed":0.1146,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-24","yield":2.55,"price":4.5},
-    {"ticker":"DEWA","dividend_aed":0.062,"ex_date":"2026-04-10","entitlement_date":"2026-04-09","payment_date":"2026-04-20","yield":2.43,"price":2.55},
-    {"ticker":"TABREED","dividend_aed":0.065,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-15","yield":2.0,"price":3.25},
-    {"ticker":"ALANSARI","dividend_aed":0.0198,"ex_date":"2026-04-03","entitlement_date":"2026-04-02","payment_date":"2026-04-17","yield":1.8,"price":1.1},
-    {"ticker":"SPINNEYS","dividend_aed":0.036,"ex_date":"2026-03-25","entitlement_date":"2026-03-24","payment_date":"2026-04-06","yield":1.5,"price":2.4}
+    {
+      "ticker": "DIN",
+      "exchange": "DFM",
+      "dividend": 1.0,
+      "price": 0.5,
+      "exDate": "25/03/2026",
+      "sector": "Other",
+      "id": 1,
+      "yield": 200.0
+    },
+    {
+      "ticker": "ORIENT",
+      "exchange": "DFM",
+      "dividend": 1.0,
+      "price": 1.6,
+      "exDate": "23/04/2026",
+      "sector": "Other",
+      "id": 2,
+      "yield": 62.5
+    },
+    {
+      "ticker": "NGI",
+      "exchange": "DFM",
+      "dividend": 0.45,
+      "price": 0.85,
+      "exDate": "23/04/2026",
+      "sector": "Other",
+      "id": 3,
+      "yield": 52.94
+    },
+    {
+      "ticker": "UFC",
+      "exchange": "DFM",
+      "dividend": 0.5,
+      "price": 1.5,
+      "exDate": "10/04/2026",
+      "sector": "Other",
+      "id": 4,
+      "yield": 33.33
+    },
+    {
+      "ticker": "TALABAT",
+      "exchange": "DFM",
+      "dividend": 0.8625,
+      "price": 2.8,
+      "exDate": "22/04/2026",
+      "sector": "Technology",
+      "id": 5,
+      "yield": 30.8
+    },
+    {
+      "ticker": "AMLAK",
+      "exchange": "DFM",
+      "dividend": 0.49,
+      "price": 2.15,
+      "exDate": "01/05/2026",
+      "sector": "Financial",
+      "id": 6,
+      "yield": 22.79
+    },
+    {
+      "ticker": "DRC",
+      "exchange": "DFM",
+      "dividend": 1.1,
+      "price": 5.2,
+      "exDate": "10/04/2026",
+      "sector": "Other",
+      "id": 7,
+      "yield": 21.15
+    },
+    {
+      "ticker": "SUKOON",
+      "exchange": "DFM",
+      "dividend": 0.25,
+      "price": 1.3,
+      "exDate": "11/03/2026",
+      "sector": "Other",
+      "id": 8,
+      "yield": 19.23
+    },
+    {
+      "ticker": "EMAARDEV",
+      "exchange": "DFM",
+      "dividend": 1.0,
+      "price": 5.8,
+      "exDate": "03/04/2026",
+      "sector": "Real Estate",
+      "id": 9,
+      "yield": 17.24
+    },
+    {
+      "ticker": "ALLIANCE",
+      "exchange": "DFM",
+      "dividend": 0.3,
+      "price": 1.8,
+      "exDate": "17/04/2026",
+      "sector": "Insurance",
+      "id": 10,
+      "yield": 16.67
+    },
+    {
+      "ticker": "EMPOWER",
+      "exchange": "DFM",
+      "dividend": 0.4375,
+      "price": 2.9,
+      "exDate": "03/04/2026",
+      "sector": "Utilities",
+      "id": 11,
+      "yield": 15.09
+    },
+    {
+      "ticker": "EMAAR",
+      "exchange": "DFM",
+      "dividend": 1.0,
+      "price": 8.2,
+      "exDate": "03/04/2026",
+      "sector": "Real Estate",
+      "id": 12,
+      "yield": 12.2
+    },
+    {
+      "ticker": "UPP",
+      "exchange": "DFM",
+      "dividend": 0.045,
+      "price": 0.38,
+      "exDate": "16/04/2026",
+      "sector": "Real Estate",
+      "id": 13,
+      "yield": 11.84
+    },
+    {
+      "ticker": "EIICAPITAL",
+      "exchange": "DFM",
+      "dividend": 0.125,
+      "price": 1.1,
+      "exDate": "04/05/2026",
+      "sector": "Other",
+      "id": 14,
+      "yield": 11.36
+    },
+    {
+      "ticker": "DIC",
+      "exchange": "DFM",
+      "dividend": 0.25,
+      "price": 2.3,
+      "exDate": "01/05/2026",
+      "sector": "Investment",
+      "id": 15,
+      "yield": 10.87
+    },
+    {
+      "ticker": "UNIKAI",
+      "exchange": "DFM",
+      "dividend": 0.3,
+      "price": 2.8,
+      "exDate": "24/04/2026",
+      "sector": "Other",
+      "id": 16,
+      "yield": 10.71
+    },
+    {
+      "ticker": "AIRARABIA",
+      "exchange": "DFM",
+      "dividend": 0.3,
+      "price": 3.2,
+      "exDate": "18/03/2026",
+      "sector": "Aviation",
+      "id": 17,
+      "yield": 9.37
+    },
+    {
+      "ticker": "DTC",
+      "exchange": "DFM",
+      "dividend": 0.0568,
+      "price": 0.7,
+      "exDate": "16/04/2026",
+      "sector": "Other",
+      "id": 18,
+      "yield": 8.11
+    },
+    {
+      "ticker": "SALAM_BAH",
+      "exchange": "DFM",
+      "dividend": 0.08,
+      "price": 1.0,
+      "exDate": "16/03/2026",
+      "sector": "Other",
+      "id": 19,
+      "yield": 8.0
+    },
+    {
+      "ticker": "AMANAT",
+      "exchange": "DFM",
+      "dividend": 0.07,
+      "price": 0.88,
+      "exDate": "09/04/2026",
+      "sector": "Investment",
+      "id": 20,
+      "yield": 7.95
+    },
+    {
+      "ticker": "DUBAIRESI",
+      "exchange": "DFM",
+      "dividend": 0.0423,
+      "price": 0.55,
+      "exDate": "18/03/2026",
+      "sector": "Other",
+      "id": 21,
+      "yield": 7.69
+    },
+    {
+      "ticker": "ALRAMZ",
+      "exchange": "DFM",
+      "dividend": 0.07,
+      "price": 0.95,
+      "exDate": "01/05/2026",
+      "sector": "Financial",
+      "id": 22,
+      "yield": 7.37
+    },
+    {
+      "ticker": "DEYAAR",
+      "exchange": "DFM",
+      "dividend": 0.05,
+      "price": 0.68,
+      "exDate": "17/04/2026",
+      "sector": "Real Estate",
+      "id": 23,
+      "yield": 7.35
+    },
+    {
+      "ticker": "NCC",
+      "exchange": "DFM",
+      "dividend": 0.25,
+      "price": 3.5,
+      "exDate": "24/04/2026",
+      "sector": "Other",
+      "id": 24,
+      "yield": 7.14
+    },
+    {
+      "ticker": "CBD",
+      "exchange": "DFM",
+      "dividend": 0.5862,
+      "price": 8.5,
+      "exDate": "06/03/2026",
+      "sector": "Banking",
+      "id": 25,
+      "yield": 6.9
+    },
+    {
+      "ticker": "AJMANBANK",
+      "exchange": "DFM",
+      "dividend": 0.0918,
+      "price": 1.45,
+      "exDate": "12/03/2026",
+      "sector": "Banking",
+      "id": 26,
+      "yield": 6.33
+    },
+    {
+      "ticker": "GFH",
+      "exchange": "DFM",
+      "dividend": 0.0811,
+      "price": 1.35,
+      "exDate": "31/03/2026",
+      "sector": "Financial",
+      "id": 27,
+      "yield": 6.01
+    },
+    {
+      "ticker": "DU",
+      "exchange": "DFM",
+      "dividend": 0.4,
+      "price": 6.8,
+      "exDate": "08/04/2026",
+      "sector": "Other",
+      "id": 28,
+      "yield": 5.88
+    },
+    {
+      "ticker": "DIB",
+      "exchange": "DFM",
+      "dividend": 0.35,
+      "price": 6.4,
+      "exDate": "10/04/2026",
+      "sector": "Banking",
+      "id": 29,
+      "yield": 5.47
+    },
+    {
+      "ticker": "EMIRATESNBD",
+      "exchange": "DFM",
+      "dividend": 1.0,
+      "price": 18.5,
+      "exDate": "26/02/2026",
+      "sector": "Banking",
+      "id": 30,
+      "yield": 5.41
+    },
+    {
+      "ticker": "NIND",
+      "exchange": "DFM",
+      "dividend": 0.05,
+      "price": 1.0,
+      "exDate": "22/05/2026",
+      "sector": "Other",
+      "id": 31,
+      "yield": 5.0
+    },
+    {
+      "ticker": "MASQ",
+      "exchange": "DFM",
+      "dividend": 10.2,
+      "price": 210.0,
+      "exDate": "18/03/2026",
+      "sector": "Banking",
+      "id": 32,
+      "yield": 4.86
+    },
+    {
+      "ticker": "DNIR",
+      "exchange": "DFM",
+      "dividend": 0.15,
+      "price": 3.8,
+      "exDate": "24/04/2026",
+      "sector": "Other",
+      "id": 33,
+      "yield": 3.95
+    },
+    {
+      "ticker": "DFM",
+      "exchange": "DFM",
+      "dividend": 0.065,
+      "price": 1.85,
+      "exDate": "03/04/2026",
+      "sector": "Financial",
+      "id": 34,
+      "yield": 3.51
+    },
+    {
+      "ticker": "BHMCAPITAL",
+      "exchange": "DFM",
+      "dividend": 0.05,
+      "price": 1.5,
+      "exDate": "29/04/2026",
+      "sector": "Financial",
+      "id": 35,
+      "yield": 3.33
+    },
+    {
+      "ticker": "AMCREIT",
+      "exchange": "DFM",
+      "dividend": 0.0375,
+      "price": 1.2,
+      "exDate": "24/03/2026",
+      "sector": "Real Estate",
+      "id": 36,
+      "yield": 3.12
+    },
+    {
+      "ticker": "UNIONCOOP",
+      "exchange": "DFM",
+      "dividend": 0.14,
+      "price": 4.5,
+      "exDate": "16/04/2026",
+      "sector": "Retail",
+      "id": 37,
+      "yield": 3.11
+    },
+    {
+      "ticker": "SALIK",
+      "exchange": "DFM",
+      "dividend": 0.1187,
+      "price": 4.1,
+      "exDate": "17/04/2026",
+      "sector": "Transport",
+      "id": 38,
+      "yield": 2.9
+    },
+    {
+      "ticker": "MF",
+      "exchange": "DFM",
+      "dividend": 0.0333,
+      "price": 1.2,
+      "exDate": "26/03/2026",
+      "sector": "Other",
+      "id": 39,
+      "yield": 2.78
+    },
+    {
+      "ticker": "TECOM",
+      "exchange": "DFM",
+      "dividend": 0.088,
+      "price": 3.4,
+      "exDate": "18/03/2026",
+      "sector": "Real Estate",
+      "id": 40,
+      "yield": 2.59
+    },
+    {
+      "ticker": "PARKIN",
+      "exchange": "DFM",
+      "dividend": 0.1146,
+      "price": 4.5,
+      "exDate": "03/04/2026",
+      "sector": "Transport",
+      "id": 41,
+      "yield": 2.55
+    },
+    {
+      "ticker": "DEWA",
+      "exchange": "DFM",
+      "dividend": 0.062,
+      "price": 2.55,
+      "exDate": "10/04/2026",
+      "sector": "Utilities",
+      "id": 42,
+      "yield": 2.43
+    },
+    {
+      "ticker": "TABREED",
+      "exchange": "DFM",
+      "dividend": 0.065,
+      "price": 3.25,
+      "exDate": "03/04/2026",
+      "sector": "Utilities",
+      "id": 43,
+      "yield": 2.0
+    },
+    {
+      "ticker": "ALANSARI",
+      "exchange": "DFM",
+      "dividend": 0.0198,
+      "price": 1.1,
+      "exDate": "03/04/2026",
+      "sector": "Financial",
+      "id": 44,
+      "yield": 1.8
+    },
+    {
+      "ticker": "SPINNEYS",
+      "exchange": "DFM",
+      "dividend": 0.036,
+      "price": 2.4,
+      "exDate": "25/03/2026",
+      "sector": "Retail",
+      "id": 45,
+      "yield": 1.5
+    }
   ]
 }
