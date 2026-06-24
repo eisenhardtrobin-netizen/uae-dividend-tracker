@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Dividend Tracker — Never Miss a UAE Dividend Again</title>
+    <meta name="description" content="Free tool tracking dividend dates, yields, and buy-by deadlines for 52 stocks on DFM & ADX. Calendar reminders, top yields, and watchlists.">
+    <meta property="og:title" content="UAE Dividend Tracker — Never Miss a UAE Dividend Again">
+    <meta property="og:description" content="Free tool tracking dividend dates, yields, and buy-by deadlines for 52 stocks on DFM & ADX.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uaedividends.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UAE Dividend Tracker">
+    <meta name="twitter:description" content="Free tool tracking dividend dates, yields, and buy-by deadlines for 52 stocks on DFM & ADX.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-300: #5eead4;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-800: #115e59;
+            --teal-900: #134e4a;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0.875rem 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--teal-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i {
+            font-size: 1.25rem;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--teal-600);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--teal-700);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--teal-600) 0%, var(--teal-800) 50%, var(--teal-900) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 1rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: var(--teal-100);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.25rem;
+            background: #ffffff;
+            color: var(--teal-700);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta i {
+            transition: transform 0.2s ease;
+        }
+
+        .hero-cta:hover i {
+            transform: translateX(3px);
+        }
+
+        .hero-sub {
+            margin-top: 1.5rem;
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal-600);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.0625rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .centered .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problem {
+            background: var(--gray-50);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+        }
+
+        .problem-card:nth-child(1) .problem-icon {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .problem-card:nth-child(2) .problem-icon {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .problem-card:nth-child(3) .problem-icon {
+            background: #e0e7ff;
+            color: #4f46e5;
+        }
+
+        .problem-card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            font-size: 0.9375rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            background: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(13, 148, 136, 0.08);
+            border-color: var(--teal-200);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--teal-50);
+            color: var(--teal-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--gray-50);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: calc(16.67% + 1rem);
+            right: calc(16.67% + 1rem);
+            height: 2px;
+            background: var(--teal-200);
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--teal-600);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.25rem;
+            box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+        }
+
+        .step h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.9375rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        /* ===== DATA SECTION ===== */
+        .data-section {
+            background: #ffffff;
+        }
+
+        .data-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .data-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--teal-50);
+            border-radius: 12px;
+        }
+
+        .data-stat .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--teal-700);
+            margin-bottom: 0.25rem;
+        }
+
+        .data-stat .label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .stock-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .stock-tag {
+            padding: 0.375rem 0.875rem;
+            background: var(--gray-100);
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            border: 1px solid var(--gray-200);
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            background: var(--gray-50);
+        }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            background: #ffffff;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            text-align: left;
+            font-family: inherit;
+            gap: 1rem;
+        }
+
+        .faq-question i {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--teal-600);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--teal-600) 0%, var(--teal-800) 100%);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta p {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: #ffffff;
+            color: var(--teal-700);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .final-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gray-900);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--teal-400);
+        }
+
+        .footer-built {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .footer-built a {
+            color: var(--teal-400);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-built a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1.25rem;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .problem-grid,
+            .features-grid,
+            .steps,
+            .data-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .final-cta {
+                padding: 3.5rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-inner > * {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+        .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+        .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                UAE Dividend Tracker
+            </a>
+            <a href="https://uaedividends.com" class="nav-cta" target="_blank" rel="noopener">
+                Open Tracker <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i>
+                Free — No sign-up required
+            </div>
+            <h1>Never Miss a UAE Dividend Again</h1>
+            <p>Free tool tracking dividend dates, yields, and buy-by deadlines for 52 stocks on DFM &amp; ADX</p>
+            <a href="https://uaedividends.com" class="hero-cta" target="_blank" rel="noopener">
+                Open Tracker <i class="fas fa-arrow-right"></i>
+            </a>
+            <p class="hero-sub">Works on desktop &amp; mobile · No account needed</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="section-inner centered">
+            <span class="section-label">The Challenge</span>
+            <h2 class="section-title">The Problem Every UAE Investor Faces</h2>
+            <p class="section-subtitle">Tracking dividends on DFM and ADX shouldn't be this hard.</p>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-shuffle"></i>
+                    </div>
+                    <h3>Scattered Data</h3>
+                    <p>DFM and ADX publish dates in different formats across different pages. Good luck keeping track of 52+ stocks manually.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-calendar-xmark"></i>
+                    </div>
+                    <h3>Missed Deadlines</h3>
+                    <p>Buy one day late and you miss the entire dividend. The buy-by date isn't the ex-date — it factors in T+2 settlement.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <h3>No Reminders</h3>
+                    <p>No existing tool sends you alerts before the buy-by date. You're left checking manually — or forgetting entirely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-inner centered">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything You Need in One Place</h2>
+            <p class="section-subtitle">Purpose-built for UAE dividend investors. Simple, fast, and free.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-days"></i>
+                    </div>
+                    <h3>Full-Year Calendar</h3>
+                    <p>See all dividend events at a glance with color-coded dots. Ex-dates, record dates, and pay dates — all mapped out.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ranking-star"></i>
+                    </div>
+                    <h3>Top Dividends Ranking</h3>
+                    <p>Find the highest-yielding UAE stocks instantly. Sorted by dividend yield so you can spot the best opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Buy-By Date Alerts</h3>
+                    <p>Download .ics reminders for Outlook or Apple Calendar. Set at 9AM market open so you never miss a deadline.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Favorites &amp; Watchlist</h3>
+                    <p>Star stocks to build your personal watchlist. Focus on the ones that matter to your portfolio.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3>UAE Public Holidays</h3>
+                    <p>Know when markets are closed. Holidays are marked directly on the calendar so you can plan around them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Dark Mode &amp; Mobile</h3>
+                    <p>Works beautifully on any device, day or night. Responsive design with full dark mode support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-inner centered">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">Three Steps to Dividend Income</h2>
+            <p class="section-subtitle">No sign-up, no complexity. Just open and go.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse</h3>
+                    <p>Explore the calendar view or check the top dividend rankings table.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Find</h3>
+                    <p>Spot a stock with an upcoming dividend and check its buy-by date.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Remind</h3>
+                    <p>Download the .ics calendar reminder and buy before the deadline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Section -->
+    <section class="data-section">
+        <div class="section-inner centered">
+            <span class="section-label">Coverage</span>
+            <h2 class="section-title">Comprehensive UAE Market Data</h2>
+            <p class="section-subtitle">All major stocks across both UAE exchanges, verified weekly.</p>
+            <div class="data-stats">
+                <div class="data-stat">
+                    <div class="number">52</div>
+                    <div class="label">Stocks Tracked</div>
+                </div>
+                <div class="data-stat">
+                    <div class="number">2</div>
+                    <div class="label">Exchanges (DFM &amp; ADX)</div>
+                </div>
+                <div class="data-stat">
+                    <div class="number">Weekly</div>
+                    <div class="label">Verification Cycle</div>
+                </div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--gray-400); margin-bottom: 1rem;">Updated June 2026 · Data verified from official DFM &amp; ADX sources</p>
+            <div class="stock-tags">
+                <span class="stock-tag">Emaar Properties</span>
+                <span class="stock-tag">Emirates NBD</span>
+                <span class="stock-tag">Etisalat (e&amp;)</span>
+                <span class="stock-tag">First Abu Dhabi Bank</span>
+                <span class="stock-tag">ADNOC Distribution</span>
+                <span class="stock-tag">Aldar Properties</span>
+                <span class="stock-tag">Mashreq Bank</span>
+                <span class="stock-tag">Talabat</span>
+                <span class="stock-tag">Dubai Islamic Bank</span>
+                <span class="stock-tag">DEWA</span>
+                <span class="stock-tag">Salik</span>
+                <span class="stock-tag">Parkin</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="section-inner centered">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long do I need to hold a stock to get the dividend?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Just buy before the Buy-By date. There's no minimum holding period in the UAE — you can even sell the next day and still receive the dividend.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is this tool free?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes, 100% free. No sign-up required, no premium tier, no hidden costs. Just open the tracker and use it.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How often is the data updated?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Data is verified weekly against official DFM and ADX sources, with full updates published monthly. New dividends are added as soon as they're announced.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I download calendar reminders?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! Every stock has a downloadable .ics file that works with Outlook, Apple Calendar, and Google Calendar. The reminder is set for 9AM on the buy-by date.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's the difference between DFM and ADX?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">They're the two UAE stock exchanges. DFM (Dubai Financial Market) lists Dubai-based companies, while ADX (Abu Dhabi Securities Exchange) lists Abu Dhabi-based companies. Both are tracked in our tool.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Track UAE Dividends?</h2>
+        <p>Join thousands of UAE investors who never miss a dividend deadline.</p>
+        <a href="https://uaedividends.com" class="final-cta-btn" target="_blank" rel="noopener">
+            Open Tracker — It's Free <i class="fas fa-arrow-right"></i>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://uaedividends.com" target="_blank" rel="noopener">uaedividends.com</a>
+                <a href="https://ko-fi.com/uaedividend" target="_blank" rel="noopener">
+                    <i class="fas fa-heart"></i> Support on Ko-fi
+                </a>
+            </div>
+            <p class="footer-built">Built by <a href="https://ko-fi.com/uaedividend" target="_blank" rel="noopener">Robin</a></p>
+            <p class="footer-disclaimer">Not financial advice. Always verify dates with DFM/ADX before trading. Past dividends do not guarantee future payouts.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
