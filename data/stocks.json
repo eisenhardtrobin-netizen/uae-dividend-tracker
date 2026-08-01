@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-07-01",
+  "lastUpdated": "2026-08-01",
   "year": 2026,
-  "stockCount": 49,
+  "stockCount": 51,
   "sources": {
     "DFM": {
       "url": "https://www.dfm.ae/investing/services/dividends-distribution-summary",
-      "count": 49
+      "count": 51
     },
     "ADX": {
       "url": "https://www.adx.ae/en/investors/investors-information/dividend-distribution",
@@ -354,13 +354,23 @@
       "yield": 3.95
     },
     {
+      "ticker": "DU",
+      "exchange": "DFM",
+      "dividend": 0.26,
+      "price": 6.8,
+      "exDate": "31/07/2026",
+      "sector": "Other",
+      "id": 35,
+      "yield": 3.82
+    },
+    {
       "ticker": "DFM",
       "exchange": "DFM",
       "dividend": 0.065,
       "price": 1.85,
       "exDate": "03/04/2026",
       "sector": "Financial",
-      "id": 35,
+      "id": 36,
       "yield": 3.51
     },
     {
@@ -370,7 +380,7 @@
       "price": 1.5,
       "exDate": "29/04/2026",
       "sector": "Financial",
-      "id": 36,
+      "id": 37,
       "yield": 3.33
     },
     {
@@ -380,7 +390,7 @@
       "price": 1.2,
       "exDate": "24/03/2026",
       "sector": "Real Estate",
-      "id": 37,
+      "id": 38,
       "yield": 3.12
     },
     {
@@ -390,7 +400,7 @@
       "price": 4.5,
       "exDate": "16/04/2026",
       "sector": "Retail",
-      "id": 38,
+      "id": 39,
       "yield": 3.11
     },
     {
@@ -400,7 +410,7 @@
       "price": 4.1,
       "exDate": "17/04/2026",
       "sector": "Transport",
-      "id": 39,
+      "id": 40,
       "yield": 2.9
     },
     {
@@ -410,7 +420,7 @@
       "price": 1.2,
       "exDate": "26/03/2026",
       "sector": "Other",
-      "id": 40,
+      "id": 41,
       "yield": 2.78
     },
     {
@@ -420,7 +430,7 @@
       "price": 3.4,
       "exDate": "18/03/2026",
       "sector": "Real Estate",
-      "id": 41,
+      "id": 42,
       "yield": 2.59
     },
     {
@@ -430,7 +440,7 @@
       "price": 4.5,
       "exDate": "03/04/2026",
       "sector": "Transport",
-      "id": 42,
+      "id": 43,
       "yield": 2.55
     },
     {
@@ -440,7 +450,7 @@
       "price": 2.55,
       "exDate": "10/04/2026",
       "sector": "Utilities",
-      "id": 43,
+      "id": 44,
       "yield": 2.43
     },
     {
@@ -450,7 +460,7 @@
       "price": 1.0,
       "exDate": "07/07/2026",
       "sector": "Other",
-      "id": 44,
+      "id": 45,
       "yield": 2.0
     },
     {
@@ -460,7 +470,17 @@
       "price": 1.0,
       "exDate": "03/06/2026",
       "sector": "Other",
-      "id": 45,
+      "id": 46,
+      "yield": 2.0
+    },
+    {
+      "ticker": "NIH",
+      "exchange": "DFM",
+      "dividend": 0.02,
+      "price": 1.0,
+      "exDate": "07/07/2026",
+      "sector": "Other",
+      "id": 47,
       "yield": 2.0
     },
     {
@@ -470,7 +490,7 @@
       "price": 3.25,
       "exDate": "03/04/2026",
       "sector": "Utilities",
-      "id": 46,
+      "id": 48,
       "yield": 2.0
     },
     {
@@ -480,7 +500,7 @@
       "price": 1.1,
       "exDate": "03/04/2026",
       "sector": "Financial",
-      "id": 47,
+      "id": 49,
       "yield": 1.8
     },
     {
@@ -490,7 +510,7 @@
       "price": 2.4,
       "exDate": "25/03/2026",
       "sector": "Retail",
-      "id": 48,
+      "id": 50,
       "yield": 1.5
     },
     {
@@ -500,7 +520,7 @@
       "price": 1.0,
       "exDate": "22/06/2026",
       "sector": "Other",
-      "id": 49,
+      "id": 51,
       "yield": 0.18
     }
   ]
