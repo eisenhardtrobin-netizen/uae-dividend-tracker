@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-10-01",
+  "lastUpdated": "2026-11-01",
   "year": 2026,
-  "stockCount": 62,
+  "stockCount": 67,
   "sources": {
     "DFM": {
       "url": "https://www.dfm.ae/investing/services/dividends-distribution-summary",
-      "count": 62
+      "count": 67
     },
     "ADX": {
       "url": "https://www.adx.ae/en/investors/investors-information/dividend-distribution",
@@ -94,13 +94,23 @@
       "yield": 21.15
     },
     {
+      "ticker": "DRC",
+      "exchange": "DFM",
+      "dividend": 1.1,
+      "price": 5.2,
+      "exDate": "14/10/2026",
+      "sector": "Other",
+      "id": 9,
+      "yield": 21.15
+    },
+    {
       "ticker": "SUKOON",
       "exchange": "DFM",
       "dividend": 0.25,
       "price": 1.3,
       "exDate": "11/03/2026",
       "sector": "Other",
-      "id": 9,
+      "id": 10,
       "yield": 19.23
     },
     {
@@ -110,7 +120,7 @@
       "price": 5.8,
       "exDate": "03/04/2026",
       "sector": "Real Estate",
-      "id": 10,
+      "id": 11,
       "yield": 17.24
     },
     {
@@ -120,18 +130,8 @@
       "price": 1.8,
       "exDate": "17/04/2026",
       "sector": "Insurance",
-      "id": 11,
-      "yield": 16.67
-    },
-    {
-      "ticker": "EMPOWER",
-      "exchange": "DFM",
-      "dividend": 0.4375,
-      "price": 2.9,
-      "exDate": "03/04/2026",
-      "sector": "Utilities",
       "id": 12,
-      "yield": 15.09
+      "yield": 16.67
     },
     {
       "ticker": "EMPOWER",
@@ -144,14 +144,34 @@
       "yield": 15.09
     },
     {
+      "ticker": "EMPOWER",
+      "exchange": "DFM",
+      "dividend": 0.4375,
+      "price": 2.9,
+      "exDate": "03/04/2026",
+      "sector": "Utilities",
+      "id": 14,
+      "yield": 15.09
+    },
+    {
       "ticker": "EMAAR",
       "exchange": "DFM",
       "dividend": 1.0,
       "price": 8.2,
       "exDate": "03/04/2026",
       "sector": "Real Estate",
-      "id": 14,
+      "id": 15,
       "yield": 12.2
+    },
+    {
+      "ticker": "TAALEEM",
+      "exchange": "DFM",
+      "dividend": 0.12,
+      "price": 1.0,
+      "exDate": "19/11/2026",
+      "sector": "Other",
+      "id": 16,
+      "yield": 12.0
     },
     {
       "ticker": "UPP",
@@ -160,7 +180,7 @@
       "price": 0.38,
       "exDate": "16/04/2026",
       "sector": "Real Estate",
-      "id": 15,
+      "id": 17,
       "yield": 11.84
     },
     {
@@ -170,7 +190,7 @@
       "price": 1.1,
       "exDate": "04/05/2026",
       "sector": "Other",
-      "id": 16,
+      "id": 18,
       "yield": 11.36
     },
     {
@@ -180,7 +200,7 @@
       "price": 2.3,
       "exDate": "01/05/2026",
       "sector": "Investment",
-      "id": 17,
+      "id": 19,
       "yield": 10.87
     },
     {
@@ -190,7 +210,7 @@
       "price": 2.8,
       "exDate": "24/04/2026",
       "sector": "Other",
-      "id": 18,
+      "id": 20,
       "yield": 10.71
     },
     {
@@ -200,7 +220,7 @@
       "price": 3.2,
       "exDate": "18/03/2026",
       "sector": "Aviation",
-      "id": 19,
+      "id": 21,
       "yield": 9.37
     },
     {
@@ -210,7 +230,7 @@
       "price": 0.7,
       "exDate": "16/04/2026",
       "sector": "Other",
-      "id": 20,
+      "id": 22,
       "yield": 8.11
     },
     {
@@ -220,7 +240,7 @@
       "price": 0.55,
       "exDate": "12/08/2026",
       "sector": "Other",
-      "id": 21,
+      "id": 23,
       "yield": 8.02
     },
     {
@@ -230,7 +250,7 @@
       "price": 1.0,
       "exDate": "16/03/2026",
       "sector": "Other",
-      "id": 22,
+      "id": 24,
       "yield": 8.0
     },
     {
@@ -240,7 +260,7 @@
       "price": 0.88,
       "exDate": "09/04/2026",
       "sector": "Investment",
-      "id": 23,
+      "id": 25,
       "yield": 7.95
     },
     {
@@ -250,7 +270,7 @@
       "price": 0.55,
       "exDate": "18/03/2026",
       "sector": "Other",
-      "id": 24,
+      "id": 26,
       "yield": 7.69
     },
     {
@@ -260,7 +280,7 @@
       "price": 1.1,
       "exDate": "21/09/2026",
       "sector": "Other",
-      "id": 25,
+      "id": 27,
       "yield": 7.68
     },
     {
@@ -270,7 +290,7 @@
       "price": 0.95,
       "exDate": "01/05/2026",
       "sector": "Financial",
-      "id": 26,
+      "id": 28,
       "yield": 7.37
     },
     {
@@ -280,7 +300,7 @@
       "price": 0.68,
       "exDate": "17/04/2026",
       "sector": "Real Estate",
-      "id": 27,
+      "id": 29,
       "yield": 7.35
     },
     {
@@ -290,7 +310,7 @@
       "price": 3.5,
       "exDate": "24/04/2026",
       "sector": "Other",
-      "id": 28,
+      "id": 30,
       "yield": 7.14
     },
     {
@@ -300,7 +320,7 @@
       "price": 8.5,
       "exDate": "06/03/2026",
       "sector": "Banking",
-      "id": 29,
+      "id": 31,
       "yield": 6.9
     },
     {
@@ -310,7 +330,7 @@
       "price": 1.45,
       "exDate": "12/03/2026",
       "sector": "Banking",
-      "id": 30,
+      "id": 32,
       "yield": 6.33
     },
     {
@@ -320,7 +340,7 @@
       "price": 1.35,
       "exDate": "31/03/2026",
       "sector": "Financial",
-      "id": 31,
+      "id": 33,
       "yield": 6.01
     },
     {
@@ -330,7 +350,7 @@
       "price": 6.8,
       "exDate": "08/04/2026",
       "sector": "Other",
-      "id": 32,
+      "id": 34,
       "yield": 5.88
     },
     {
@@ -340,7 +360,7 @@
       "price": 6.4,
       "exDate": "10/04/2026",
       "sector": "Banking",
-      "id": 33,
+      "id": 35,
       "yield": 5.47
     },
     {
@@ -350,7 +370,7 @@
       "price": 18.5,
       "exDate": "26/02/2026",
       "sector": "Banking",
-      "id": 34,
+      "id": 36,
       "yield": 5.41
     },
     {
@@ -360,7 +380,7 @@
       "price": 1.0,
       "exDate": "22/05/2026",
       "sector": "Other",
-      "id": 35,
+      "id": 37,
       "yield": 5.0
     },
     {
@@ -370,7 +390,7 @@
       "price": 210.0,
       "exDate": "18/03/2026",
       "sector": "Banking",
-      "id": 36,
+      "id": 38,
       "yield": 4.86
     },
     {
@@ -380,7 +400,7 @@
       "price": 1.0,
       "exDate": "17/06/2026",
       "sector": "Other",
-      "id": 37,
+      "id": 39,
       "yield": 4.07
     },
     {
@@ -390,7 +410,7 @@
       "price": 3.8,
       "exDate": "24/04/2026",
       "sector": "Other",
-      "id": 38,
+      "id": 40,
       "yield": 3.95
     },
     {
@@ -400,7 +420,7 @@
       "price": 6.8,
       "exDate": "31/07/2026",
       "sector": "Other",
-      "id": 39,
+      "id": 41,
       "yield": 3.82
     },
     {
@@ -410,7 +430,7 @@
       "price": 1.85,
       "exDate": "03/04/2026",
       "sector": "Financial",
-      "id": 40,
+      "id": 42,
       "yield": 3.51
     },
     {
@@ -420,7 +440,7 @@
       "price": 0.88,
       "exDate": "21/08/2026",
       "sector": "Investment",
-      "id": 41,
+      "id": 43,
       "yield": 3.41
     },
     {
@@ -430,7 +450,7 @@
       "price": 1.2,
       "exDate": "21/08/2026",
       "sector": "Real Estate",
-      "id": 42,
+      "id": 44,
       "yield": 3.33
     },
     {
@@ -440,7 +460,7 @@
       "price": 1.5,
       "exDate": "29/04/2026",
       "sector": "Financial",
-      "id": 43,
+      "id": 45,
       "yield": 3.33
     },
     {
@@ -450,7 +470,7 @@
       "price": 1.2,
       "exDate": "24/03/2026",
       "sector": "Real Estate",
-      "id": 44,
+      "id": 46,
       "yield": 3.12
     },
     {
@@ -460,7 +480,7 @@
       "price": 4.5,
       "exDate": "16/04/2026",
       "sector": "Retail",
-      "id": 45,
+      "id": 47,
       "yield": 3.11
     },
     {
@@ -470,7 +490,7 @@
       "price": 4.1,
       "exDate": "17/04/2026",
       "sector": "Transport",
-      "id": 46,
+      "id": 48,
       "yield": 2.9
     },
     {
@@ -480,18 +500,18 @@
       "price": 1.2,
       "exDate": "26/03/2026",
       "sector": "Other",
-      "id": 47,
+      "id": 49,
       "yield": 2.78
     },
     {
-      "ticker": "TECOM",
+      "ticker": "PARKIN",
       "exchange": "DFM",
-      "dividend": 0.088,
-      "price": 3.4,
-      "exDate": "07/08/2026",
-      "sector": "Real Estate",
-      "id": 48,
-      "yield": 2.59
+      "dividend": 0.1171,
+      "price": 4.5,
+      "exDate": "14/10/2026",
+      "sector": "Transport",
+      "id": 50,
+      "yield": 2.6
     },
     {
       "ticker": "TECOM",
@@ -500,7 +520,17 @@
       "price": 3.4,
       "exDate": "18/03/2026",
       "sector": "Real Estate",
-      "id": 49,
+      "id": 51,
+      "yield": 2.59
+    },
+    {
+      "ticker": "TECOM",
+      "exchange": "DFM",
+      "dividend": 0.088,
+      "price": 3.4,
+      "exDate": "07/08/2026",
+      "sector": "Real Estate",
+      "id": 52,
       "yield": 2.59
     },
     {
@@ -510,7 +540,7 @@
       "price": 4.5,
       "exDate": "03/04/2026",
       "sector": "Transport",
-      "id": 50,
+      "id": 53,
       "yield": 2.55
     },
     {
@@ -520,7 +550,7 @@
       "price": 2.55,
       "exDate": "10/04/2026",
       "sector": "Utilities",
-      "id": 51,
+      "id": 54,
       "yield": 2.43
     },
     {
@@ -530,8 +560,18 @@
       "price": 2.55,
       "exDate": "15/10/2026",
       "sector": "Utilities",
-      "id": 52,
+      "id": 55,
       "yield": 2.43
+    },
+    {
+      "ticker": "SALIK",
+      "exchange": "DFM",
+      "dividend": 0.0939,
+      "price": 4.1,
+      "exDate": "15/10/2026",
+      "sector": "Transport",
+      "id": 56,
+      "yield": 2.29
     },
     {
       "ticker": "REIT",
@@ -540,7 +580,7 @@
       "price": 1.0,
       "exDate": "22/09/2026",
       "sector": "Other",
-      "id": 53,
+      "id": 57,
       "yield": 2.19
     },
     {
@@ -550,7 +590,7 @@
       "price": 1.0,
       "exDate": "07/07/2026",
       "sector": "Other",
-      "id": 54,
+      "id": 58,
       "yield": 2.0
     },
     {
@@ -560,7 +600,7 @@
       "price": 1.0,
       "exDate": "03/06/2026",
       "sector": "Other",
-      "id": 55,
+      "id": 59,
       "yield": 2.0
     },
     {
@@ -570,7 +610,7 @@
       "price": 1.0,
       "exDate": "07/07/2026",
       "sector": "Other",
-      "id": 56,
+      "id": 60,
       "yield": 2.0
     },
     {
@@ -580,7 +620,7 @@
       "price": 3.25,
       "exDate": "03/04/2026",
       "sector": "Utilities",
-      "id": 57,
+      "id": 61,
       "yield": 2.0
     },
     {
@@ -590,7 +630,7 @@
       "price": 1.1,
       "exDate": "03/04/2026",
       "sector": "Financial",
-      "id": 58,
+      "id": 62,
       "yield": 1.8
     },
     {
@@ -600,7 +640,7 @@
       "price": 3.25,
       "exDate": "19/08/2026",
       "sector": "Utilities",
-      "id": 59,
+      "id": 63,
       "yield": 1.54
     },
     {
@@ -610,7 +650,7 @@
       "price": 2.4,
       "exDate": "25/03/2026",
       "sector": "Retail",
-      "id": 60,
+      "id": 64,
       "yield": 1.5
     },
     {
@@ -620,7 +660,7 @@
       "price": 2.4,
       "exDate": "19/08/2026",
       "sector": "Retail",
-      "id": 61,
+      "id": 65,
       "yield": 1.42
     },
     {
@@ -630,8 +670,18 @@
       "price": 1.0,
       "exDate": "22/06/2026",
       "sector": "Other",
-      "id": 62,
+      "id": 66,
       "yield": 0.18
+    },
+    {
+      "ticker": "EMAAR",
+      "exchange": "DFM",
+      "dividend": 0.005,
+      "price": 8.2,
+      "exDate": "13/11/2026",
+      "sector": "Real Estate",
+      "id": 67,
+      "yield": 0.06
     }
   ]
 }
